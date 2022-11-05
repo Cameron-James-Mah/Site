@@ -6,9 +6,9 @@ function App() {
   return (
     <>
       <Routes>
-        <Route path = "/Personal_Site" element={<Home />}></Route>
-        <Route path = "/Personal_Site/sudoku" element={<Sudoku />}></Route>
-        <Route path = "/Personal_Site/pathing" element={<Pathing />}></Route>
+        <Route path = "/Site" element={<Home />}></Route>
+        <Route path = "/Site/sudoku" element={<Sudoku />}></Route>
+        <Route path = "/Site/pathing" element={<Pathing />}></Route>
       </Routes>
     </>
   );

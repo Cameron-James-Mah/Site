@@ -18,8 +18,8 @@ const HomeDiv = styled('div')({
 });
 
 const cardData = [
-    {title: "2D pathing visualizer", description: "Visualizes different 2d pathing algorithms", src: pathing, link: "/pathing"},
-    {title: "Sudoku Solver", description: "Visualizes sudoku solving algorithm", src: sudoku, link: "/sudoku"}
+    {title: "2D pathing visualizer", description: "Visualizes different 2d pathing algorithms", src: pathing, link: "/Site/pathing"},
+    {title: "Sudoku Solver", description: "Visualizes sudoku solving algorithm", src: sudoku, link: "/Site/sudoku"}
 ]
 
 const Home = () => {
