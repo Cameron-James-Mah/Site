@@ -22,11 +22,13 @@
   text-overflow: ellipsis;
   white-space: nowrap;
 }*/
+
 .Sudoku-page {
     margin-top: 2em;
     position: relative;
     table {
         border-collapse: collapse;
+        table-layout: fixed;
         margin-left: auto;
         margin-right: auto;
     }
@@ -41,7 +43,6 @@
         height: 2.4em;
         width: 2.4em;
         text-align: center;
-        font-size: 1.875rem;
         padding: 0;
     }
 
@@ -50,13 +51,13 @@
         height: 2.4em;
         width: 2.4em;
         text-align: center;
-        font-size: 1.875rem;
+        font-size: 2.5vh;
         padding: 0;
     }
 
     button {
-        padding: 0.938rem 2rem;
-        font-size: 0.938rem;
+        padding: 1vh 2vw;
+        font-size: 1.4vh;
         margin: 2em;
     }
 
@@ -70,3 +71,12 @@
         font-size: 3.125rem;
     }
 }
+/*
+input {
+    border: solid thin;
+    height: 3rem;
+    width: 3rem;
+    text-align: center;
+    font-size: 2vw;
+    padding: 0;
+}*/

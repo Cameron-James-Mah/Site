@@ -1,7 +1,8 @@
 import { Routes, Route } from 'react-router-dom'
 import Home from './components/Home.js'
-import Pathing from './components/Pathing.js';
-import Sudoku from './components/Sudoku.js';
+import Pathing from './components/Pathing/Pathing.js';
+import Sudoku from './components/Sudoku/Sudoku';
+
 function App() {
   return (
     <>

@@ -1,5 +1,5 @@
-import Menubar from "./Menubar";
-import { Grid, Box} from "@mui/material";
+import Menubar from "../Menubar";
+import { Grid, Box, Typography} from "@mui/material";
 import { styled } from '@mui/material/styles';
 import Paper from '@mui/material/Paper';
 import React, { useEffect } from 'react';
@@ -602,7 +602,8 @@ function visualize(index){
     return(
     <>
     <Menubar />
-    <Box sx={{ flexGrow: 1 }}>
+    
+        <Typography marginTop = "2vh" variant = "h3" align = "center" color = "textPrimary" >Sudoku Solver</Typography>
         <div className="Sudoku-page">
     <table id="board">
         <colgroup>
@@ -815,7 +816,7 @@ function visualize(index){
         <button type="button" onClick={reset}>Reset</button>
     </div>
     </div>
-    </Box>
+    
     </>
 )
 }

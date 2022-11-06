@@ -1,0 +1,50 @@
+.Pathing-page {
+    margin-top: 4vh;
+    position: relative;
+
+    table {
+        border-collapse: collapse;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    colgroup,
+    tbody {
+        border: solid medium;
+    }
+
+    td {
+        border: solid thin;
+        height: 3vw;
+        width: 3vw;
+        text-align: center;
+        padding: 0;
+    }
+
+    input {
+        border: solid thin;
+        height: 3.2vw;
+        width: 3.2vw;
+        text-align: center;
+        padding: 0;
+    }
+
+    button {
+        padding: 1vh 2vw;
+        font-size: 1.4vh;
+        margin: 2em;
+    }
+    .options {
+        position: relative;
+        text-align: center;
+    }
+
+    
+
+    .selection {
+        position: relative;
+        text-align: center;
+        font-size: 1.5vw;
+    }
+
+}

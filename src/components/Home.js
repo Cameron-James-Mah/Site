@@ -18,8 +18,8 @@ const HomeDiv = styled('div')({
 });
 
 const cardData = [
-    {title: "2D pathing visualizer", description: "Visualizes different 2d pathing algorithms", src: pathing, link: "/Site/pathing"},
-    {title: "Sudoku Solver", description: "Visualizes sudoku solving algorithm", src: sudoku, link: "/Site/sudoku"}
+    {title: "2D pathing visualizer", description: "Visualizes different 2d pathing algorithms", src: pathing, link: "pathing", link2: ""},
+    {title: "Sudoku Solver", description: "Visualizes sudoku solving algorithm", src: sudoku, link: "sudoku", link2: ""}
 ]
 
 const Home = () => {
@@ -68,7 +68,7 @@ const Home = () => {
                             </CardContent>
                             <CardActions style={{justifyContent: 'space-between'}}>
                                 <Button component = {Link} to = {elem.link} size="small">Try it out!</Button>
-                                <Button component = {Link} size="small">Summary</Button>    
+                                <Button component = {Link} to = {elem.link2} size="small">Summary</Button>    
                             </CardActions>
                         </Card>
                      </Grid>
