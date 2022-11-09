@@ -5,35 +5,54 @@ import { createTheme, styled, ThemeProvider } from "@mui/material/styles";
 import pathing from "../images/pathing.gif"
 import sudoku from "../images/sudoku.gif"
 import Menubar from './Menubar';
-/*
-const HomeDiv = styled("div")(({ theme }) => ({
-    backgroundColor: theme.palette.background.paper,
-    padding: theme.spacing(8, 0, 6),
-  
-}));*/
-const HomeDiv = styled('div')({
-  //backgroundColor: 'aliceblue',
-  padding: 8,
-  borderRadius: 4,
-});
+import { useState } from "react";
+import { blue, green, grey } from '@mui/material/colors';
+
+
+
 
 const cardData = [
     {title: "2D pathing visualizer", description: "Visualizes different 2d pathing algorithms", src: pathing, link: "pathing", link2: ""},
     {title: "Sudoku Solver", description: "Visualizes sudoku solving algorithm", src: sudoku, link: "sudoku", link2: ""}
 ]
 
+
+const darkTheme = createTheme({
+    palette: {
+      mode: 'dark'
+    },
+});
+
+const lightTheme = createTheme({
+    palette: {
+      mode: 'light'
+    },
+});
+
+
 const Home = () => {
     
+    const [currentTheme, setTheme] = useState(lightTheme);
+    const setThemeCallback = (childTheme) =>{
+        if(childTheme === "light"){
+            setTheme(lightTheme);
+            //console.log(1);
+        }
+        else{
+            setTheme(darkTheme);
+            //console.log(2);
+        }
+    }
     return (
-        <>
-                <Menubar />
+        <ThemeProvider theme = {currentTheme}>
+            <CssBaseline />
+            <Menubar parentCallback = {setThemeCallback} />
                 <br />
-                <HomeDiv>
                     <Container maxWidth = "sm">
-                        <Typography variant = "h2" align = "center" color = "textPrimary" gutterBottom>
+                        <Typography variant = "h2" align = "center" gutterBottom>
                             Welcome
                         </Typography>
-                        <Typography variant = "h5" align = "center" color = "textSecondary" paragraph>
+                        <Typography variant = "h5" align = "center" paragraph>
                             ds fsdfdsf djsdn jwnd wa dw saiodia sofhoiasfh ioafhoiawh fowhow ihfioahf oiwhfiow hfhwaoifhw  wjopw ajdpoawfjwop afjwj fow
                         </Typography>
                     </Container>
@@ -62,26 +81,20 @@ const Home = () => {
                                 <Typography gutterBottom variant="h5" component="div">
                                     {elem.title}
                                 </Typography>
-                                <Typography variant="body2" color="text.secondary">
+                                <Typography variant="body2">
                                     {elem.description}
                                 </Typography> 
                             </CardContent>
                             <CardActions style={{justifyContent: 'space-between'}}>
-                                <Button component = {Link} to = {elem.link} size="small">Try it out!</Button>
-                                <Button component = {Link} to = {elem.link2} size="small">Summary</Button>    
+                                <Button component = {Link} color = "primary" to = {elem.link} size="small">Try it out!</Button>
+                                <Button component = {Link} color = "primary" to = {elem.link2} size="small">Summary</Button>    
                             </CardActions>
                         </Card>
                      </Grid>
                 ))}
             </Grid>    
-                </HomeDiv>
-                <div>
+                </ThemeProvider>
 
-                </div>
-
-
-                
-        </>
     );
 }
 

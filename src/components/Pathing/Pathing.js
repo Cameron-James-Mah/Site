@@ -182,7 +182,9 @@ const Pathing = () => {
         }
         else{
             alert("No valid path");
+            lockout = false;
         }
+        
         
     }
 
@@ -199,7 +201,6 @@ const Pathing = () => {
     function visualize(index){//Show path traversed by the algorithm
         if(index >= searchCache.length){
             setTimeout(() => showPath(pathCache.length-1), speed);
-            lockout = false;
             return;
         }
         setTimeout(() => visualize(index+1), speed);
@@ -557,7 +558,7 @@ const Pathing = () => {
     return (
         <div>
             <Menubar />
-            <Typography marginTop = "2vh" variant = "h3" align = "center" color = "textPrimary" >2D Pathing Visualizer</Typography>
+            <Typography marginTop = "2vh" variant = "h3" align = "center" color = "textPrimary" fontSize={"2.5vw"}>2D Pathing Visualizer</Typography>
             <div className="Pathing-page">
                 <table id="board">
                         <tbody>
