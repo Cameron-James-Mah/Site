@@ -23,8 +23,8 @@ const lightTheme = createTheme({
 
 
 function App() {
-  const [homePaperTheme, setHomePaperTheme] = useState(grey[900]);
-  const [currentTheme, setTheme] = useState(darkTheme);
+  const [homePaperTheme, setHomePaperTheme] = useState(grey[200]);
+  const [currentTheme, setTheme] = useState(lightTheme);
     const setThemeCallback = (childTheme) =>{
         if(childTheme === "light"){
             setTheme(lightTheme);
