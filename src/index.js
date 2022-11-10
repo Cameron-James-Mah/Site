@@ -4,7 +4,7 @@ import App from './App';
 //import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom'
 
-document.body.style = 'background: aliceblue;';
+//document.body.style = 'background: aliceblue;';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>

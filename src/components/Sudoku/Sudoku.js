@@ -601,7 +601,6 @@ function visualize(index){
 
     return(
     <>
-    <Menubar />
     
         <Typography marginTop = "2vh" variant = "h3" align = "center" color = "textPrimary" fontSize={"2.5vw"}>Sudoku Solver</Typography>
         <div className="Sudoku-page">

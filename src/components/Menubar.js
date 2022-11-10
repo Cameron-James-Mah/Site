@@ -71,7 +71,7 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
 
 
 const Menubar = ({parentCallback}) =>{
-  const [currentTheme, setTheme] = useState(lightTheme);
+  const [currentTheme, setTheme] = useState(darkTheme);
   function switchTheme(){
     if(currentTheme === darkTheme){
       setTheme(lightTheme);
@@ -84,8 +84,6 @@ const Menubar = ({parentCallback}) =>{
   }
     return(
     <>
-    <CssBaseline />
-    <ThemeProvider theme={currentTheme}>
             <AppBar position = "relative">
                 <Toolbar>
                     <IconButton aria-label = "Home Icon" size = "medium" component = {Link} to = "/Site">
@@ -99,7 +97,6 @@ const Menubar = ({parentCallback}) =>{
       />
                 </Toolbar>
             </AppBar>
-        </ThemeProvider>
     </>
     );
 }

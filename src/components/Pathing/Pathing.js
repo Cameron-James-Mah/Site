@@ -557,7 +557,6 @@ const Pathing = () => {
     
     return (
         <div>
-            <Menubar />
             <Typography marginTop = "2vh" variant = "h3" align = "center" color = "textPrimary" fontSize={"2.5vw"}>2D Pathing Visualizer</Typography>
             <div className="Pathing-page">
                 <table id="board">

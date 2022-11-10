@@ -17,36 +17,13 @@ const cardData = [
 ]
 
 
-const darkTheme = createTheme({
-    palette: {
-      mode: 'dark'
-    },
-});
 
-const lightTheme = createTheme({
-    palette: {
-      mode: 'light'
-    },
-});
 
 
 const Home = () => {
     
-    const [currentTheme, setTheme] = useState(lightTheme);
-    const setThemeCallback = (childTheme) =>{
-        if(childTheme === "light"){
-            setTheme(lightTheme);
-            //console.log(1);
-        }
-        else{
-            setTheme(darkTheme);
-            //console.log(2);
-        }
-    }
     return (
-        <ThemeProvider theme = {currentTheme}>
-            <CssBaseline />
-            <Menubar parentCallback = {setThemeCallback} />
+        <>
                 <br />
                     <Container maxWidth = "sm">
                         <Typography variant = "h2" align = "center" gutterBottom>
@@ -93,8 +70,7 @@ const Home = () => {
                      </Grid>
                 ))}
             </Grid>    
-                </ThemeProvider>
-
+</>
     );
 }
 
