@@ -4,48 +4,50 @@ import { Typography, AppBar, Card, CardActions, CardContent, CardMedia, CssBasel
 import { createTheme, styled, ThemeProvider } from "@mui/material/styles";
 import pathing from "../images/pathing.gif"
 import sudoku from "../images/sudoku.gif"
-import Menubar from './Menubar';
-import { useState } from "react";
-import { blue, green, grey } from '@mui/material/colors';
+import { grey } from "@mui/material/colors";
+import { Paper } from "@mui/material";
+
 
 
 
 
 const cardData = [
-    {title: "2D pathing visualizer", description: "Visualizes different 2d pathing algorithms", src: pathing, link: "pathing", link2: ""},
+    {title: "2D pathing visualizer", description: "Visualizes different 2d pathing algorithms", src: pathing, link: "pathing", link2: "pathingSummary"},
     {title: "Sudoku Solver", description: "Visualizes sudoku solving algorithm", src: sudoku, link: "sudoku", link2: ""}
 ]
 
-
-
-
-
-const Home = () => {
+const Home = ({paperTheme}) => {
     
     return (
         <>
-                <br />
-                    <Container maxWidth = "sm">
-                        <Typography variant = "h2" align = "center" gutterBottom>
+                
+                    <Container maxWidth = "md">
+                        <Typography variant = "h2" align = "center" gutterBottom paddingTop = "3vh">
                             Welcome
                         </Typography>
-                        <Typography variant = "h5" align = "center" paragraph>
-                            ds fsdfdsf djsdn jwnd wa dw saiodia sofhoiasfh ioafhoiawh fowhow ihfioahf oiwhfiow hfhwaoifhw  wjopw ajdpoawfjwop afjwj fow
+                        <Typography variant = "h5" align = "center" paragraph paddingBottom = "3vh">
+                            My name is Cameron Mah, I am a Computer Programming and Analysis graduate from Seneca College. I enjoy programming and problem solving.
                         </Typography>
                     </Container>
                     
-                <br /><br /><br /><br /><br />
                 
+                <Container maxWidth = "md"  paddingTop = "2vh" paddingBottom = "2vh" >
+                <Paper elevation={16} variant="outlined" style={{ backgroundColor: paperTheme}}>
+                <Typography variant = "h3" align = "center" gutterBottom paddingTop = "5vh">
+                            Projects:
+                </Typography>
                 <Grid
                 container
                 spacing={10}
                 direction="row"
                 alignItems="center"
                 justifyContent="center"
-                
+                paddingTop = "2vh"
+                paddingBottom = "9vh"
             >
+                
                 {cardData.map(elem => (
-                    <Grid item xs={12} sm={6} md={3} key={cardData.indexOf(elem)}>
+                    <Grid item  key={cardData.indexOf(elem)}>
                         <Card>
                             <CardMedia
                                 component="img"
@@ -53,6 +55,7 @@ const Home = () => {
                                 image= {elem.src}
                                 alt="temp"
                                 sx={{ padding: "1em 1em 0 1em", objectFit: "contain" }}
+                                
                                 />
                             <CardContent>
                                 <Typography gutterBottom variant="h5" component="div">
@@ -70,6 +73,8 @@ const Home = () => {
                      </Grid>
                 ))}
             </Grid>    
+            </Paper>
+            </Container>
 </>
     );
 }

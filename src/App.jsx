@@ -2,9 +2,11 @@ import { Routes, Route } from 'react-router-dom'
 import Home from './components/Home.js'
 import Pathing from './components/Pathing/Pathing.js';
 import Sudoku from './components/Sudoku/Sudoku';
+import Summary from './components/Pathing/Summary.js';
 import { ThemeProvider, CssBaseline, createTheme } from '@mui/material/';
 import Menubar from './components/Menubar';
 import { useState } from "react";
+import { grey } from '@mui/material/colors';
 
 const darkTheme = createTheme({
   palette: {
@@ -18,15 +20,20 @@ const lightTheme = createTheme({
     },
 });
 
+
+
 function App() {
+  const [homePaperTheme, setHomePaperTheme] = useState(grey[900]);
   const [currentTheme, setTheme] = useState(darkTheme);
     const setThemeCallback = (childTheme) =>{
         if(childTheme === "light"){
             setTheme(lightTheme);
+            setHomePaperTheme(grey[200]);
             //console.log(1);
         }
         else{
             setTheme(darkTheme);
+            setHomePaperTheme(grey[900]);
             //console.log(2);
         }
     }
@@ -36,9 +43,10 @@ function App() {
       <CssBaseline />
     <Menubar parentCallback = {setThemeCallback} />
       <Routes>
-        <Route path = "/Site" element={<Home />}></Route>
+        <Route path = "/Site" element={<Home paperTheme = {homePaperTheme}/>}></Route>
         <Route path = "/Site/sudoku" element={<Sudoku />}></Route>
         <Route path = "/Site/pathing" element={<Pathing />}></Route>
+        <Route path = "/Site/pathingSummary" element={<Summary paperTheme={homePaperTheme}/>}></Route>
       </Routes>
       </ThemeProvider>
     </>
