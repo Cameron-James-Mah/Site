@@ -1,18 +1,21 @@
 {
   "files": {
     "main.css": "/Site/static/css/main.aa43f075.css",
-    "main.js": "/Site/static/js/main.26003584.js",
+    "main.js": "/Site/static/js/main.8328eb2e.js",
     "static/media/pathing.gif": "/Site/static/media/pathing.df7ea34dac5f8f95f379.gif",
     "static/media/BFS.gif": "/Site/static/media/BFS.97bcdc52b0571f324f99.gif",
     "static/media/A.gif": "/Site/static/media/A.52f0ab19873074584d80.gif",
+    "static/media/SudokuCode.png": "/Site/static/media/SudokuCode.1f068184d7ea5608de41.png",
     "static/media/sudoku.gif": "/Site/static/media/sudoku.692337e11eeb6671e6e8.gif",
+    "static/media/SolvedBoard.png": "/Site/static/media/SolvedBoard.e35dc0616c04cf38a922.png",
     "static/media/DFS.png": "/Site/static/media/DFS.e371f678f22a885787e0.png",
+    "static/media/ValidBoard.png": "/Site/static/media/ValidBoard.69a9a128509d2a85a31a.png",
     "index.html": "/Site/index.html",
     "main.aa43f075.css.map": "/Site/static/css/main.aa43f075.css.map",
-    "main.26003584.js.map": "/Site/static/js/main.26003584.js.map"
+    "main.8328eb2e.js.map": "/Site/static/js/main.8328eb2e.js.map"
   },
   "entrypoints": [
     "static/css/main.aa43f075.css",
-    "static/js/main.26003584.js"
+    "static/js/main.8328eb2e.js"
   ]
 }
