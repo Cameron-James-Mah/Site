@@ -13,7 +13,7 @@ import { Paper } from "@mui/material";
 
 const cardData = [
     {title: "2D pathing visualizer", description: "Visualizes different 2d pathing algorithms", src: pathing, link: "pathing", link2: "pathingSummary"},
-    {title: "Sudoku Solver", description: "Visualizes sudoku solving algorithm", src: sudoku, link: "sudoku", link2: ""}
+    {title: "Sudoku Solver", description: "Visualizes sudoku solving algorithm", src: sudoku, link: "sudoku", link2: "sudokuSummary"}
 ]
 
 const Home = ({paperTheme}) => {

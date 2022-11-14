@@ -2,7 +2,8 @@ import { Routes, Route } from 'react-router-dom'
 import Home from './components/Home.js'
 import Pathing from './components/Pathing/Pathing.js';
 import Sudoku from './components/Sudoku/Sudoku';
-import Summary from './components/Pathing/Summary.js';
+import PathingSummary from './components/Pathing/Summary.js';
+import SudokuSummary from './components/Sudoku/Summary.js';
 import { ThemeProvider, CssBaseline, createTheme } from '@mui/material/';
 import Menubar from './components/Menubar';
 import { useState } from "react";
@@ -46,7 +47,8 @@ function App() {
         <Route path = "/Site" element={<Home paperTheme = {homePaperTheme}/>}></Route>
         <Route path = "/Site/sudoku" element={<Sudoku />}></Route>
         <Route path = "/Site/pathing" element={<Pathing />}></Route>
-        <Route path = "/Site/pathingSummary" element={<Summary paperTheme={homePaperTheme}/>}></Route>
+        <Route path = "/Site/pathingSummary" element={<PathingSummary paperTheme={homePaperTheme}/>}></Route>
+        <Route path = "/Site/sudokuSummary" element={<SudokuSummary paperTheme={homePaperTheme}/>}></Route>
       </Routes>
       </ThemeProvider>
     </>
