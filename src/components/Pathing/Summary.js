@@ -1,6 +1,5 @@
 import React from "react";
 import { Container, Paper, Typography, Box } from "@mui/material";
-import { grey } from '@mui/material/colors';
 import DFS from "../../images/DFS.png"
 import BFS from "../../images/BFS.gif"
 import A from "../../images/A.gif"
@@ -40,9 +39,9 @@ const Summary = ({paperTheme}) => {
                         <Typography paddingLeft = "1vw" paddingRight = "1vw" variant = "h5" align = "left" paragraph paddingBottom = "3vh">
                             DFS is an algorithm that follows a possible branch until it reaches a dead end or its goal(in this case the goal cell). When reaching a dead end it will then backtrack its path until it can branch out again. This is a recursive algorithm.
                         </Typography>
-                        <img src = {DFS} style={{width: "60%", marginLeft: "1vw"}}></img>
+                        <img alt = "DFS code" src = {DFS} style={{width: "60%", marginLeft: "1vw"}}></img>
                         <Typography paddingLeft = "1vw" paddingRight = "1vw" variant = "h5" align = "left" paragraph paddingBottom = "3vh">
-                            DFS functions are often very similar and can be GENERALLY broken down as such: 
+                            DFS functions are often very similar and can be GENERALLY broken down as follows: 
                             <br />1. Boundary check <br />2. Goal check <br />3. Some operations <br />4. Recursive calls to adjacent 
                             <br /><br />
                             My code can be broken down as follows:
@@ -57,10 +56,10 @@ const Summary = ({paperTheme}) => {
                              -BFS(Breadth First Search)
                         </Typography>
                         <Typography paddingLeft = "1vw" paddingRight = "1vw" variant = "h5" align = "left" paragraph paddingBottom = "3vh">
-                            BFS is an algorithm that spreads from the start evenly flowing out. Visually I like to think of this like if you were to spill water on a flat surface or in a maze with a flat surface. The water would evenly flood out similar to how BFS would. Note that in a non weighted graph(such as my grid) BFS is the same as Dijkstra's Algorithm. 
+                            BFS is an algorithm that spreads from the start evenly flowing out. Visually I like to think of this like if you were to spill water on a flat surface or in a maze with a flat surface. The water would evenly flood out similar to how BFS would. Both BFS and Dijkstra's algorithm are guranteed to find the shortest paths. Note that in a non weighted graph(such as my grid) BFS is the same as Dijkstra's Algorithm. 
                         </Typography>
                         <div className = "imageWrapper">
-                        <img src = {BFS} style={{ width: "60%"}}></img>
+                        <img alt = "BFS gif" src = {BFS} style={{ width: "60%"}}></img>
                         </div>
                         <Typography paddingLeft = "1vw" paddingRight = "1vw" variant = "h5" align = "left" paragraph paddingTop = "3vh" paddingBottom = "3vh">
                             To branch out evenly, you first push the starting cell into your queue. Then you repeat the process of: <br />
@@ -73,13 +72,13 @@ const Summary = ({paperTheme}) => {
                              -A*
                         </Typography>
                         <Typography paddingLeft = "1vw" paddingRight = "1vw" variant = "h5" align = "left" paragraph paddingBottom = "3vh">
-                            A* is an algorithm that tries to be smarter about its path as oppose to BFS/DFS. A* considers an estimated cost from cells to the goal(this means the goal cell location must be known) and prioritzes traversing the lowest cost cells. Since this is a non-weighted graph I used the "Manhattan Distance" which is just simply cost = Δx+Δy. The implementation of A* is similar to BFS except with a priority to lower cost cells.
+                            A* is an algorithm that tries to be smarter about its path as oppose to BFS/DFS. A* considers an estimated cost from cells to the goal(this means the goal cell location must be known) and prioritzes traversing the lowest cost cells. Since this is a non-weighted graph I used the "Manhattan Distance" which is just simply cost = Δx+Δy. The implementation of A* is similar to BFS except with a priority to lower cost cells. A* will usually find a path faster then other algorithms, but is not guranteed to find the shortest path.
                         </Typography>
                         <div className = "imageWrapper">
-                        <img src = {A} style={{ width: "60%"}}></img>
+                        <img alt = "A* gif" src = {A} style={{ width: "60%"}}></img>
                         </div>
                         <Typography paddingLeft = "1vw" paddingRight = "1vw" variant = "h5" align = "left" paragraph paddingTop = "3vh" paddingBottom = "3vh">
-                            A* is similar to BFS except we prioritize the lowest estimated cost(Δx+Δy) from goal to the neighboring cells. Here I am using an array to hold my neighboring cells like in BFS except I order them in ascending order in cost. Everytime I traverse the cell at the first index of this array then add its valid neighboring cells to my array keeping the ascending order.
+                            A* is similar to BFS except we prioritize the lowest estimated cost(Δx+Δy) from goal to the neighboring cells. Here I am using an array to hold my neighboring cells like in BFS except I order them in ascending order in cost. Everytime I traverse the cell at the first index of this array then add its valid neighboring cells to my array keeping the ascending order. 
                         </Typography>
                 </Paper>
             </Container>
