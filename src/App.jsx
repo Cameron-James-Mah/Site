@@ -4,6 +4,9 @@ import Pathing from './components/Pathing/Pathing.js';
 import Sudoku from './components/Sudoku/Sudoku';
 import PathingSummary from './components/Pathing/Summary.js';
 import SudokuSummary from './components/Sudoku/Summary.js';
+import ShowPokemon from './components/Pokemon/ShowPokemon.js';
+import SearchPokemon from './components/Pokemon/SearchPokemon.js';
+import Test from "./components/test"
 import { ThemeProvider, CssBaseline, createTheme } from '@mui/material/';
 import Menubar from './components/Menubar';
 import { useState } from "react";
@@ -49,6 +52,9 @@ function App() {
         <Route path = "/Site/pathing" element={<Pathing />}></Route>
         <Route path = "/Site/pathingSummary" element={<PathingSummary paperTheme={homePaperTheme}/>}></Route>
         <Route path = "/Site/sudokuSummary" element={<SudokuSummary paperTheme={homePaperTheme}/>}></Route>
+        <Route path = "/Site/test" element={<Test/>}></Route>
+        <Route path = "/Site/showPokemon" element={<ShowPokemon/>}></Route>
+        <Route path = "/Site/searchPokemon" element={<SearchPokemon/>}></Route>
       </Routes>
       </ThemeProvider>
     </>
