@@ -14,7 +14,7 @@ import pokeball from "../images/Pokeball.png"
 const cardData = [
     {title: "2D pathing visualizer", description: "Visualizes different 2d pathing algorithms", src: pathing, link: "pathing", link2: "pathingSummary"},
     {title: "Sudoku Solver", description: "Visualizes sudoku solving algorithm", src: sudoku, link: "sudoku", link2: "sudokuSummary"},
-    {title: "Pokedex", description: "Find information on any pokemon", src: pokeball, link: "searchPokemon", link2: ""}
+    {title: "Poke Search", description: "Find information on any pokemon", src: pokeball, link: "searchPokemon", link2: ""}
 ]
 
 const Home = ({paperTheme}) => {
@@ -32,8 +32,8 @@ const Home = ({paperTheme}) => {
                 </Container>
                     
                 
-                <Container maxWidth = "md"  paddingTop = "2vh" paddingBottom = "2vh" >
-                <Paper elevation={16} variant="outlined" style={{ backgroundColor: paperTheme}}>
+                <Container maxWidth = "md"  paddingTop = "2vh">
+                <Paper elevation={16} variant="outlined" marginBottom = "50vh" style={{ backgroundColor: paperTheme}}>
                 <Typography variant = "h3" align = "center" gutterBottom paddingTop = "5vh">
                             Projects:
                 </Typography>
@@ -76,6 +76,7 @@ const Home = ({paperTheme}) => {
             </Grid>    
             </Paper>
             </Container>
+            <br/>
 </>
     );
 }

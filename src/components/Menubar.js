@@ -86,7 +86,7 @@ const Menubar = ({parentCallback}) =>{
     <>
             <AppBar position = "relative">
                 <Toolbar>
-                    <IconButton aria-label = "Home Icon" size = "medium" component = {Link} to = "/Site">
+                    <IconButton aria-label = "Home Icon" size = "medium" component = {Link} to = "/">
                         <HomeIcon>
                         </HomeIcon>
                         <Typography variant = "h5">Home</Typography>

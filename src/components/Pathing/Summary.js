@@ -82,6 +82,7 @@ const Summary = ({paperTheme}) => {
                         </Typography>
                 </Paper>
             </Container>
+            <br/>
         </>
     );
 }

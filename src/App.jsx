@@ -47,14 +47,14 @@ function App() {
       <CssBaseline />
     <Menubar parentCallback = {setThemeCallback} />
       <Routes>
-        <Route path = "/Site" element={<Home paperTheme = {homePaperTheme}/>}></Route>
-        <Route path = "/Site/sudoku" element={<Sudoku />}></Route>
-        <Route path = "/Site/pathing" element={<Pathing />}></Route>
-        <Route path = "/Site/pathingSummary" element={<PathingSummary paperTheme={homePaperTheme}/>}></Route>
-        <Route path = "/Site/sudokuSummary" element={<SudokuSummary paperTheme={homePaperTheme}/>}></Route>
-        <Route path = "/Site/test" element={<Test/>}></Route>
-        <Route path = "/Site/showPokemon" element={<ShowPokemon/>}></Route>
-        <Route path = "/Site/searchPokemon" element={<SearchPokemon/>}></Route>
+        <Route path = "/" element={<Home paperTheme = {homePaperTheme}/>}></Route>
+        <Route path = "/sudoku" element={<Sudoku />}></Route>
+        <Route path = "/pathing" element={<Pathing />}></Route>
+        <Route path = "/pathingSummary" element={<PathingSummary paperTheme={homePaperTheme}/>}></Route>
+        <Route path = "/sudokuSummary" element={<SudokuSummary paperTheme={homePaperTheme}/>}></Route>
+        <Route path = "/test" element={<Test/>}></Route>
+        <Route path = "/searchPokemon/showPokemon" element={<ShowPokemon paperTheme={homePaperTheme}/>}></Route>
+        <Route path = "/searchPokemon" element={<SearchPokemon/>}></Route>
       </Routes>
       </ThemeProvider>
     </>
