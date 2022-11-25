@@ -7,14 +7,15 @@ import sudoku from "../images/sudoku.gif"
 import { grey } from "@mui/material/colors";
 import { Paper } from "@mui/material";
 import pokeball from "../images/Pokeball.png"
-
+import pokedex from "../images/pokedex.png"
 
 
 
 const cardData = [
     {title: "2D pathing visualizer", description: "Visualizes different 2d pathing algorithms", src: pathing, link: "pathing", link2: "pathingSummary"},
     {title: "Sudoku Solver", description: "Visualizes sudoku solving algorithm", src: sudoku, link: "sudoku", link2: "sudokuSummary"},
-    {title: "Poke Search", description: "Find information on any pokemon", src: pokeball, link: "searchPokemon", link2: ""}
+    {title: "Poke Search", description: "Find information on a pokemon", src: pokeball, link: "searchPokemon", link2: ""},
+    {title: "Pokedex", description: "Browse all Pokemon", src: pokedex, link: "", link2: ""}
 ]
 
 const Home = ({paperTheme}) => {
@@ -27,7 +28,7 @@ const Home = ({paperTheme}) => {
                         Welcome
                     </Typography>
                     <Typography variant = "h5" align = "center" paragraph paddingBottom = "3vh">
-                        My name is Cameron Mah, I am a Computer Programming and Analysis graduate from Seneca College. I enjoy programming and problem solving.
+                        My name is Cameron Mah, I am a computer programmer based in Canada. I enjoy programming and problem solving.
                     </Typography>
                 </Container>
                     
