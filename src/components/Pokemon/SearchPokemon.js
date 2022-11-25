@@ -13,7 +13,7 @@ const SearchPokemon = () =>{
     return(
         <>
             <div align = "center" style = {{marginTop: "4vh"}}>
-                <Typography variant = "h2" >Pokemon Search</Typography>
+                <Typography variant = "h2" sx={{fontFamily: ['London Stokes']}} >Pokemon Search</Typography>
                 <img src = {Pokeball} width = "300vh" height = "300vh" mix-blend-mode = "multiply" paddingBottom = "10vh" align = "center" style = {{marginTop: "4vh"}}></img>
             </div>
             

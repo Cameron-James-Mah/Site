@@ -6,6 +6,8 @@ import { grey } from "@mui/material/colors";
 import { Link } from "react-router-dom";
 import "./styles.css";
 import TypeText from "./TypeText"
+import HelpIcon from '@mui/icons-material/Help';
+import Tooltip from '@mui/material/Tooltip';
 
 let pokeChain = []; //holds names of pokemon evo chain
 let pokeChainSrc = []; //holds javascript objects with properties for image src with corresponding pokemon name used for image alt and onclick events
@@ -15,6 +17,8 @@ const ShowPokemon = ({paperTheme}) =>{
     const [isLoaded, setLoaded] = useState(false);
     const {pokeName} = location.state;
     const [pokemon, setPokemon] = useState([]);
+    const [flavorText, setFlavorText] = useState("");
+    const [ability, setAbility] = useState([]);
 
     function capitalizeFirstLetter(string) {
         return string.charAt(0).toUpperCase() + string.slice(1);
@@ -25,20 +29,35 @@ const ShowPokemon = ({paperTheme}) =>{
         pokeChain = [];
         pokeChainSrc = [];
         const dataFetch = async () => {
-            const data = await (
+            const data = await ( //fetching data for pokemon
                 await fetch(
                 `https://pokeapi.co/api/v2/pokemon/${pokeName}`
                 )
             ).json();        
             setPokemon(data);
+            const abilityData = await ( //fetching data for ability
+                await fetch(data.abilities["0"].ability.url)
+            ).json();
+            let abilityObj = {
+                name : abilityData.name,
+                flavorText : abilityData.flavor_text_entries["0"].flavor_text
+            }
+            
+            setAbility(abilityObj);
             let data2 = await (
                 await fetch(
                 `https://pokeapi.co/api/v2/pokemon-species/${pokeName}`
                 )
             ).json();  
             //console.log(data2.evolution_chain.url);
-            
-            data2 = await (
+            setFlavorText(data2.flavor_text_entries["0"].flavor_text);
+            for(let i = 0; i < data2.flavor_text_entries.length; i++){//Make sure to grab english flavor text
+                if(data2.flavor_text_entries[i].language.name == "en"){
+                    setFlavorText(data2.flavor_text_entries[i].flavor_text);
+                    break;
+                }
+            }
+            data2 = await ( //fetching data for pokemon species (evochains)
                 await fetch(
                 `${data2.evolution_chain.url}`
                 )
@@ -81,6 +100,7 @@ const ShowPokemon = ({paperTheme}) =>{
         }
         //console.log(pokemon.name);
         pokemon.name = capitalizeFirstLetter(pokemon.name);
+        ability.name = capitalizeFirstLetter(ability.name);
         for(let i = 0; i < pokemon.types.length; i++){
             pokemon.types[i].type.name = capitalizeFirstLetter(pokemon.types[i].type.name);
         }
@@ -89,22 +109,33 @@ const ShowPokemon = ({paperTheme}) =>{
         <>
             <Container>
                 <Paper elevation={16} variant="outlined" style={{ backgroundColor: paperTheme, marginTop: "5vh"}}>
-                    <Typography variant = "h3" align = "center">{pokemon.name}</Typography>
-                    <div align = "center">
-                        <img src = {pokemon.sprites.other["official-artwork"].front_default} style = {{width: "15vw"}} ></img>
+                    <Typography variant = "h3" align = "center" marginTop="2vh" marginBottom="3vh">{pokemon.name}</Typography>
+                    <div style = {{display: "flex", flexDirection: "row", gap: "20em"}}>
+                        <div align = "left">
+                        <img src = {pokemon.sprites.other["official-artwork"].front_default} style = {{width: "15vw", marginLeft: "8vw"}} ></img>
+                        </div>
+                        <div>
+                             <Typography variant = "h5" marginTop = "4vh" sx={{fontStyle: 'italic'}}>{flavorText}</Typography>
+                            <div style = {{display: "flex", flexDirection: "row", alignItems: "center", gap: "0.5em", marginTop : "5vw"}}>
+                                <Typography variant = "h5">Type(s): </Typography>
+                                {pokemon.types.map(elem => (
+                                    <TypeText Type = {elem.type.name}></TypeText>
+                                ))}
+                            </div>
+                            <Typography variant = "h5" >Height: {pokemon.height}</Typography>
+                            <Typography variant = "h5" >Weight: {pokemon.weight}</Typography>
+                            <Typography variant = "h5" >Ability: {ability.name} <Tooltip title = {ability.flavorText}><HelpIcon/></Tooltip></Typography>
+                            
+                        </div>
+
                     </div>
-                    <div style = {{display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "center", gap: "0.5em"}}>
-                        {pokemon.types.map(elem => (
-                            <TypeText Type = {elem.type.name}></TypeText>
-                        ))}
-                    </div>
-                    <Typography variant = "h5" align = "center">Height: {pokemon.height}</Typography>
-                    <Typography variant = "h5" align = "center">Weight: {pokemon.weight}</Typography>
-                    <Typography marginTop = "5vh" variant = "h4" align = "center">Evolution Chain</Typography>
+                    
+                    
+                    <Typography marginTop = "10vh" variant = "h4" align = "center">Evolution Chain</Typography>
                     <div style = {{display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "center", gap: "0.5em", marginTop: "2vh"}}> 
                         {pokeChainSrc.map(elem => (
                             <Link to = "" state={{ pokeName: `${elem.alt}`, temp: "testing"}}>
-                                <img src = {elem.src} style = {{width: "15vw"}} className = "image" alt = {elem.alt} onClick={() => window.location.reload(false)}></img>
+                                <img src = {elem.src} style = {{width: "10vw"}} className = "image" alt = {elem.alt} onClick={() => window.location.reload(false)}></img>
                             </Link>
                         ))}
                     </div>
