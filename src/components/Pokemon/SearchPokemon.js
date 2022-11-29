@@ -21,7 +21,7 @@ const SearchPokemon = () =>{
                     <TextField id="pokeName" label="Pokemon Name" variant="outlined" onChange = {updatePoke} />
             </div>
             <div align = "center" style = {{marginTop: "4vh"}}>
-                <Button component = {Link} to = "showPokemon" state={{ pokeName: poke, temp: "testing"}}  variant="outlined" paddingTop = "12vh" >Search</Button>
+                <Button component = {Link} to = "/showPokemon" state={{ pokeName: poke, temp: "testing"}}  variant="outlined" paddingTop = "12vh" >Search</Button>
             </div>
             <div align = "center" style = {{marginTop: "4vh"}}>
                 <Typography marginTop = "6vh" variant = "h7" >NOTE: Pokemon such as Aegislash and Shaymin that have multiple forms with different abilities under the same name are currently NOT supported</Typography>
