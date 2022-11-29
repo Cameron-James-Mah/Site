@@ -55,7 +55,7 @@ function App() {
         <Route path = "/pathingSummary" element={<PathingSummary paperTheme={homePaperTheme}/>}></Route>
         <Route path = "/sudokuSummary" element={<SudokuSummary paperTheme={homePaperTheme}/>}></Route>
         <Route path = "/test" element={<Test/>}></Route>
-        <Route path = "/searchPokemon/showPokemon" element={<ShowPokemon paperTheme={homePaperTheme}/>}></Route>
+        <Route path = "/showPokemon" element={<ShowPokemon paperTheme={homePaperTheme}/>}></Route>
         <Route path = "/searchPokemon" element={<SearchPokemon/>}></Route>
         <Route path = "/genSelect" element={<PokedexGenSelect paperTheme={homePaperTheme}/>}></Route>
         <Route path = "/genSelect/pokedex" element={<Pokedex paperTheme={homePaperTheme}/>}></Route>

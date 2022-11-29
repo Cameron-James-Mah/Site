@@ -16,7 +16,7 @@ let pokeChainSrc = []; //holds javascript objects with properties for image src 
 const ShowPokemon = ({paperTheme}) =>{
     const location = useLocation();
     const [isLoaded, setLoaded] = useState(false);
-    const {pokeName} = location.state;
+    let {pokeName} = location.state;
     const [pokemon, setPokemon] = useState([]);
     const [flavorText, setFlavorText] = useState("");
     const [ability, setAbility] = useState([]);
@@ -24,6 +24,8 @@ const ShowPokemon = ({paperTheme}) =>{
     function capitalizeFirstLetter(string) {
         return string.charAt(0).toUpperCase() + string.slice(1);
     }
+
+    
 
 
     useEffect(()=>{

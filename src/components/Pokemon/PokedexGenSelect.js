@@ -21,7 +21,6 @@ const cardData = [
     {title: "Generation 6", src: Gen6, gen: 6},
     {title: "Generation 7", src: Gen7, gen: 7},
     {title: "Generation 8", src: Gen8, gen: 8},
-    {title: "Generation 9", src: Gen9, gen: 9},
     {title: "All Generations", src: GenAll, gen: 0}
 ]
 

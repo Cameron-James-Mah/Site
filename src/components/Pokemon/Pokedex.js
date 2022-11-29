@@ -1,7 +1,9 @@
 import { Container, Paper, Typography, Card, CardActionArea, CardMedia, CardContent, Grid, CircularProgress } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import pokedex from "../../images/pokedex.png"
+import TypeText2 from "./TypeText2"
 
 let pokeCardInfo = []; //Pokemon card info contains name, image src, type(s) 
 
@@ -11,6 +13,10 @@ const Pokedex = ({paperTheme}) =>{
     const [isLoaded, setLoaded] = useState(false);
     const [pokeData, setPokeData] = useState([]);
     useEffect(()=>{
+        function capitalizeFirstLetter(string) {
+            return string.charAt(0).toUpperCase() + string.slice(1);
+        }
+        pokeCardInfo = [];
         //console.log(Gen);
         const dataFetch = async () => {
             const data = await ( //fetching data for pokemon all pokemon
@@ -19,21 +25,189 @@ const Pokedex = ({paperTheme}) =>{
                 )
             ).json(); 
             setPokeData(data.results);
-            if(Gen == 0){
-
-            }
-            for(let i = 0; i < data.results.length; i++){//Get the data I need for each pokemon
+            
+            if(Gen == 1){
+                for(let i = 0; i < 151; i++){//Get the data I need for each pokemon
                 const tempData = await (
                     await fetch(
                         `${data.results[i].url}`
                     )
                 ).json();
+                let tempArr = [];
+                for(let i = 0; i < tempData.types.length; i++){
+                    console.log(tempData.types[`${i}`].type.name);
+                    tempArr.push(capitalizeFirstLetter(tempData.types[i].type.name));
+                }
                 let tempObj = {
                     name: tempData.name,
-                    src: tempData.sprites.other["official-artwork"].front_default
+                    src: tempData.sprites.other["official-artwork"].front_default,
+                    types: tempArr
                 }
                 pokeCardInfo.push(tempObj);
+                }
             }
+            else if(Gen == 2){
+                for(let i = 151; i < 251; i++){//Get the data I need for each pokemon
+                const tempData = await (
+                    await fetch(
+                        `${data.results[i].url}`
+                    )
+                ).json();
+                let tempArr = [];
+                for(let i = 0; i < tempData.types.length; i++){
+                    console.log(tempData.types[`${i}`].type.name);
+                    tempArr.push(capitalizeFirstLetter(tempData.types[i].type.name));
+                }
+                let tempObj = {
+                    name: tempData.name,
+                    src: tempData.sprites.other["official-artwork"].front_default,
+                    types: tempArr
+                }
+                pokeCardInfo.push(tempObj);
+                }
+            }
+            else if(Gen == 3){
+                for(let i = 251; i < 386; i++){//Get the data I need for each pokemon
+                const tempData = await (
+                    await fetch(
+                        `${data.results[i].url}`
+                    )
+                ).json();
+                let tempArr = [];
+                for(let i = 0; i < tempData.types.length; i++){
+                    console.log(tempData.types[`${i}`].type.name);
+                    tempArr.push(capitalizeFirstLetter(tempData.types[i].type.name));
+                }
+                let tempObj = {
+                    name: tempData.name,
+                    src: tempData.sprites.other["official-artwork"].front_default,
+                    types: tempArr
+                }
+                pokeCardInfo.push(tempObj);
+                }
+            }
+            else if(Gen == 4){
+                for(let i = 386; i < 493; i++){//Get the data I need for each pokemon
+                const tempData = await (
+                    await fetch(
+                        `${data.results[i].url}`
+                    )
+                ).json();
+                let tempArr = [];
+                for(let i = 0; i < tempData.types.length; i++){
+                    console.log(tempData.types[`${i}`].type.name);
+                    tempArr.push(capitalizeFirstLetter(tempData.types[i].type.name));
+                }
+                let tempObj = {
+                    name: tempData.name,
+                    src: tempData.sprites.other["official-artwork"].front_default,
+                    types: tempArr
+                }
+                pokeCardInfo.push(tempObj);
+                }
+            }
+            else if(Gen == 5){
+                for(let i = 493; i < 649; i++){//Get the data I need for each pokemon
+                const tempData = await (
+                    await fetch(
+                        `${data.results[i].url}`
+                    )
+                ).json();
+                let tempArr = [];
+                for(let i = 0; i < tempData.types.length; i++){
+                    console.log(tempData.types[`${i}`].type.name);
+                    tempArr.push(capitalizeFirstLetter(tempData.types[i].type.name));
+                }
+                let tempObj = {
+                    name: tempData.name,
+                    src: tempData.sprites.other["official-artwork"].front_default,
+                    types: tempArr
+                }
+                pokeCardInfo.push(tempObj);
+                }
+            }
+            else if(Gen == 6){
+                for(let i = 649; i < 721; i++){//Get the data I need for each pokemon
+                const tempData = await (
+                    await fetch(
+                        `${data.results[i].url}`
+                    )
+                ).json();
+                let tempArr = [];
+                for(let i = 0; i < tempData.types.length; i++){
+                    console.log(tempData.types[`${i}`].type.name);
+                    tempArr.push(capitalizeFirstLetter(tempData.types[i].type.name));
+                }
+                let tempObj = {
+                    name: tempData.name,
+                    src: tempData.sprites.other["official-artwork"].front_default,
+                    types: tempArr
+                }
+                pokeCardInfo.push(tempObj);
+                }
+            }
+            else if(Gen == 7){
+                for(let i = 721; i < 809; i++){//Get the data I need for each pokemon
+                const tempData = await (
+                    await fetch(
+                        `${data.results[i].url}`
+                    )
+                ).json();
+                let tempArr = [];
+                for(let i = 0; i < tempData.types.length; i++){
+                    console.log(tempData.types[`${i}`].type.name);
+                    tempArr.push(capitalizeFirstLetter(tempData.types[i].type.name));
+                }
+                let tempObj = {
+                    name: tempData.name,
+                    src: tempData.sprites.other["official-artwork"].front_default,
+                    types: tempArr
+                }
+                pokeCardInfo.push(tempObj);
+                }
+            }
+            else if(Gen == 8){
+                for(let i = 809; i < 905; i++){//Get the data I need for each pokemon
+                const tempData = await (
+                    await fetch(
+                        `${data.results[i].url}`
+                    )
+                ).json();
+                let tempArr = [];
+                for(let i = 0; i < tempData.types.length; i++){
+                    console.log(tempData.types[`${i}`].type.name);
+                    tempArr.push(capitalizeFirstLetter(tempData.types[i].type.name));
+                }
+                let tempObj = {
+                    name: tempData.name,
+                    src: tempData.sprites.other["official-artwork"].front_default,
+                    types: tempArr
+                }
+                pokeCardInfo.push(tempObj);
+                }
+            }
+            else{ //All pokemon
+                for(let i = 0; i < 906; i++){//Get the data I need for each pokemon
+                const tempData = await (
+                    await fetch(
+                        `${data.results[i].url}`
+                    )
+                ).json();
+                let tempArr = [];
+                for(let i = 0; i < tempData.types.length; i++){
+                    console.log(tempData.types[`${i}`].type.name);
+                    tempArr.push(capitalizeFirstLetter(tempData.types[i].type.name));
+                }
+                let tempObj = {
+                    name: tempData.name,
+                    src: tempData.sprites.other["official-artwork"].front_default,
+                    types: tempArr
+                }
+                pokeCardInfo.push(tempObj);
+                }
+            }
+            
+            
             setLoaded(true);
         }
         dataFetch();
@@ -61,7 +235,7 @@ const Pokedex = ({paperTheme}) =>{
                         {pokeCardInfo.map(elem =>(
                             <Grid item  key={pokeCardInfo.indexOf(elem)}>
                              <Card>
-                                <CardActionArea>
+                                <CardActionArea component = {Link} to = "/showPokemon" state={{ pokeName: elem.name}}>
                                     <CardMedia
                                     component="img"
                                     height="140"
@@ -73,9 +247,12 @@ const Pokedex = ({paperTheme}) =>{
                                     <Typography gutterBottom variant="h5" component="div">
                                         {elem.name}
                                     </Typography>
-                                    <Typography variant="body2" color="text.secondary">
-                                        {elem.name}
-                                    </Typography>
+                                    <div style = {{display: "flex", flexDirection: "row", alignItems: "center", gap: "0.5em"}}>
+                                        {elem.types.map(elem2 => (
+                                        <TypeText2 Type = {elem2}></TypeText2>
+                                    ))}
+                                    </div>
+                                    
                                     </CardContent>
                                 </CardActionArea>
                                 </Card>
