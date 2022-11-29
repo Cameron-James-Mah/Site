@@ -14,8 +14,8 @@ import pokedex from "../images/pokedex.png"
 const cardData = [
     {title: "2D pathing visualizer", description: "Visualizes different 2d pathing algorithms", src: pathing, link: "pathing", link2: "pathingSummary"},
     {title: "Sudoku Solver", description: "Visualizes sudoku solving algorithm", src: sudoku, link: "sudoku", link2: "sudokuSummary"},
-    {title: "Poke Search", description: "Find information on a pokemon", src: pokeball, link: "searchPokemon", link2: ""},
-    {title: "Pokedex", description: "Browse all Pokemon", src: pokedex, link: "", link2: ""}
+    {title: "Poke Search", description: "Find information on a specific pokemon", src: pokeball, link: "searchPokemon", link2: ""},
+    {title: "Pokedex", description: "Browse all Pokemon", src: pokedex, link: "genSelect", link2: ""}
 ]
 
 const Home = ({paperTheme}) => {

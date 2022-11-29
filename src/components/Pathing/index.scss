@@ -1,5 +1,5 @@
 .Pathing-page {
-    margin-top: 4vh;
+    margin-top: 4rem;
     position: relative;
 
     table {
@@ -15,8 +15,8 @@
 
     td {
         border: solid thin;
-        height: 6.2vh;
-        width: 6.2vh;
+        height: 6.1vh;
+        width: 6.1vh;
         text-align: center;
         padding: 0;
     }
@@ -30,9 +30,9 @@
     }
 
     button {
-        padding: 1vh 2vw;
-        font-size: 1.4vh;
-        margin: 2vh;
+        padding: 1rem 2rem;
+        font-size: 0.8rem;
+        margin: 1rem;
     }
     .options {
         position: relative;
@@ -44,7 +44,7 @@
     .selection {
         position: relative;
         text-align: center;
-        font-size: 1.2vw;
+        font-size: 1.4rem;
     }
 
 }

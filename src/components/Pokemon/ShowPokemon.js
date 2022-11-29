@@ -1,4 +1,4 @@
-import { Typography, Paper } from "@mui/material";
+import { Typography, Paper, Grid, CircularProgress } from "@mui/material";
 import { Container } from "@mui/system";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
@@ -8,6 +8,7 @@ import "./styles.css";
 import TypeText from "./TypeText"
 import HelpIcon from '@mui/icons-material/Help';
 import Tooltip from '@mui/material/Tooltip';
+
 
 let pokeChain = []; //holds names of pokemon evo chain
 let pokeChainSrc = []; //holds javascript objects with properties for image src with corresponding pokemon name used for image alt and onclick events
@@ -91,6 +92,7 @@ const ShowPokemon = ({paperTheme}) =>{
      
     
      if(isLoaded){ //Using this to ensure i get my data from api before render, not sure if this is best way to go about this
+        //console.log(pokemon);
         if(pokeChain.length===0){//if no evos then just display current pokemon
                 let tempObj = {
                     src: pokemon.sprites.other["official-artwork"].front_default,
@@ -110,32 +112,41 @@ const ShowPokemon = ({paperTheme}) =>{
             <Container>
                 <Paper elevation={16} variant="outlined" style={{ backgroundColor: paperTheme, marginTop: "5vh"}}>
                     <Typography variant = "h3" align = "center" marginTop="2vh" marginBottom="3vh">{pokemon.name}</Typography>
-                    <div style = {{display: "flex", flexDirection: "row", gap: "20em"}}>
-                        <div align = "left">
-                        <img src = {pokemon.sprites.other["official-artwork"].front_default} style = {{width: "15vw", marginLeft: "8vw"}} ></img>
-                        </div>
-                        <div>
-                             <Typography variant = "h5" marginTop = "4vh" sx={{fontStyle: 'italic'}}>{flavorText}</Typography>
+                        <Grid container columnSpacing = "10vw" direction="row"
+                alignItems="center"
+                justifyContent="center">
+                            <Grid item>
+                                <div align = "left">
+                                <img src = {pokemon.sprites.other["official-artwork"].front_default} style = {{width: "15rem", marginLeft: "8vw"}} ></img>
+                                </div>
+                            </Grid>
+                            <Grid item direction="column" spacing={10}>
+                            <div style = {{width: "20rem"}}> 
+                            <Typography variant = "h5" marginTop = "4vh" sx={{fontStyle: 'italic'}}>{flavorText}</Typography>
+                            </div>
+                        
+                        <Grid item>
                             <div style = {{display: "flex", flexDirection: "row", alignItems: "center", gap: "0.5em", marginTop : "5vw"}}>
                                 <Typography variant = "h5">Type(s): </Typography>
                                 {pokemon.types.map(elem => (
                                     <TypeText Type = {elem.type.name}></TypeText>
                                 ))}
                             </div>
+                            
                             <Typography variant = "h5" >Height: {pokemon.height}</Typography>
                             <Typography variant = "h5" >Weight: {pokemon.weight}</Typography>
                             <Typography variant = "h5" >Ability: {ability.name} <Tooltip title = {ability.flavorText}><HelpIcon/></Tooltip></Typography>
-                            
-                        </div>
+                            </Grid>
+                            </Grid>
+                        </Grid>
 
-                    </div>
                     
                     
                     <Typography marginTop = "10vh" variant = "h4" align = "center">Evolution Chain</Typography>
                     <div style = {{display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "center", gap: "0.5em", marginTop: "2vh"}}> 
                         {pokeChainSrc.map(elem => (
                             <Link to = "" state={{ pokeName: `${elem.alt}`, temp: "testing"}}>
-                                <img src = {elem.src} style = {{width: "10vw"}} className = "image" alt = {elem.alt} onClick={() => window.location.reload(false)}></img>
+                                <img src = {elem.src} style = {{width: "10rem"}} className = "image" alt = {elem.alt} onClick={() => window.location.reload(false)}></img>
                             </Link>
                         ))}
                     </div>
@@ -145,7 +156,14 @@ const ShowPokemon = ({paperTheme}) =>{
         </>
         )
      }
-
+     else{
+        return(
+            <div style={{display: 'flex', justifyContent: 'center', marginTop: "30vh"}}>
+                <CircularProgress size={"5rem"} />
+            </div>
+            
+        )
+    }
     
 }
 

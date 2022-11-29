@@ -7,6 +7,8 @@ import SudokuSummary from './components/Sudoku/Summary.js';
 import ShowPokemon from './components/Pokemon/ShowPokemon.js';
 import SearchPokemon from './components/Pokemon/SearchPokemon.js';
 import Test from "./components/test"
+import Pokedex from './components/Pokemon/Pokedex.js';
+import PokedexGenSelect from './components/Pokemon/PokedexGenSelect.js';
 import { ThemeProvider, CssBaseline, createTheme } from '@mui/material/';
 import Menubar from './components/Menubar';
 import { useState } from "react";
@@ -55,6 +57,8 @@ function App() {
         <Route path = "/test" element={<Test/>}></Route>
         <Route path = "/searchPokemon/showPokemon" element={<ShowPokemon paperTheme={homePaperTheme}/>}></Route>
         <Route path = "/searchPokemon" element={<SearchPokemon/>}></Route>
+        <Route path = "/genSelect" element={<PokedexGenSelect paperTheme={homePaperTheme}/>}></Route>
+        <Route path = "/genSelect/pokedex" element={<Pokedex paperTheme={homePaperTheme}/>}></Route>
       </Routes>
       </ThemeProvider>
     </>
