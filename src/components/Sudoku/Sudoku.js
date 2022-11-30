@@ -1,5 +1,5 @@
 import Menubar from "../Menubar";
-import { Grid, Box, Typography} from "@mui/material";
+import { Grid, Box, Typography, FormControlLabel, Checkbox} from "@mui/material";
 import { styled } from '@mui/material/styles';
 import Paper from '@mui/material/Paper';
 import React, { useEffect } from 'react';
@@ -65,7 +65,7 @@ let changeCache = [];
 let solved = false;
 let lockout = false;
 let original = [];
-
+let isVis = false;
 const Sudoku = () => {
 
     useEffect(() =>{//Reset state of component
@@ -211,8 +211,14 @@ const Sudoku = () => {
             }
         }
         else{
-            resetToOriginal();//Toggle for visualization
-            visualize(0);
+            if(isVis){
+                resetToOriginal();//Toggle for visualization
+                visualize(0);
+            }
+            else{
+                lockout = false;
+            }
+            
             //console.log(changeCache[changeCache.length-1].cord);
         }
         
@@ -599,6 +605,17 @@ function visualize(index){
     
 }
 
+    function visClicked(){
+        if(isVis){
+            isVis = false;
+            //console.log("No vis")
+        }
+        else{
+            isVis = true;
+            //console.log("Yes vis")
+        }
+    }
+
     return(
     <>
     
@@ -814,6 +831,10 @@ function visualize(index){
         <button type="button" onClick={testFunc}>Solve</button>
         <button type="button" onClick={reset}>Reset</button>
     </div>
+    <div align = "center">
+        <FormControlLabel control = {<Checkbox />} onChange = {visClicked} label = {<Typography variant = "h6">Visualize</Typography>}></FormControlLabel>
+    </div>
+    
     </div>
     
     </>

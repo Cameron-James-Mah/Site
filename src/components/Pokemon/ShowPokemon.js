@@ -59,6 +59,13 @@ const ShowPokemon = ({paperTheme}) =>{
                 name : abilityData.name,
                 flavorText : abilityData.flavor_text_entries["0"].flavor_text
             }
+            for(let i = 0; i < abilityData.flavor_text_entries.length; i++){ //Get first english flavor text
+                if(abilityData.flavor_text_entries[i].language.name == "en"){
+                    //console.log(abilityData.flavor_text_entries[i].flavor_text);
+                    abilityObj.flavorText = abilityData.flavor_text_entries[i].flavor_text;
+                    break;
+                }
+            }
             
             setAbility(abilityObj);
             let data2 = [];
@@ -81,7 +88,7 @@ const ShowPokemon = ({paperTheme}) =>{
                 }
             }
             
-            console.log(data2);
+            //console.log(data2);
             if(data2.evolution_chain !== null){
                 data2 = await ( //fetching data for pokemon species (evochains)
                 await fetch(
@@ -192,7 +199,7 @@ const ShowPokemon = ({paperTheme}) =>{
                     <Paper elevation={16} variant="outlined" style={{ backgroundColor: paperTheme, marginTop: "5vh", marginBottom: "5vh"}}>
                         <Typography variant = "h4" align = "center">Could not find Pokemon</Typography>
                         <div align = "center">
-                            <img src = {SadPokemon} alt = "Sad Pokemon" align = "center"></img>
+                            <img src = {SadPokemon} alt = "Sad Pokemon" align = "center" style = {{width: "25rem"}}></img>
                         </div>
                         
                         <Typography variant = "h5" marginTop={3} align = "center">Possible issues: </Typography>
