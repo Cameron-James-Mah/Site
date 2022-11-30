@@ -29,8 +29,7 @@ const PokedexGenSelect = ({paperTheme}) =>{
     return(
         <>
             <Container maxWidth = "lg">
-                <Paper elevation={16} variant="outlined" style={{ backgroundColor: paperTheme, marginTop: "5vh"}}>
-                    <Typography variant = "h3" align = "center">Generation Selection</Typography>
+                <Paper elevation={16} variant="outlined" style={{ backgroundColor: paperTheme, marginTop: "5vh", marginBottom: "4vh"}}>
                     <Grid container
                 spacing={10}
                 direction="row"

@@ -17,6 +17,7 @@ const ShowPokemon = ({paperTheme}) =>{
     const location = useLocation();
     const [isLoaded, setLoaded] = useState(false);
     let {pokeName} = location.state;
+    let {pokeNum} = location.state;
     const [pokemon, setPokemon] = useState([]);
     const [flavorText, setFlavorText] = useState("");
     const [ability, setAbility] = useState([]);
@@ -25,33 +26,48 @@ const ShowPokemon = ({paperTheme}) =>{
         return string.charAt(0).toUpperCase() + string.slice(1);
     }
 
-    
+    async function getData(url){
+        const data = await fetch(url);
+        const res = await data.json();
+        return res;
+    }
 
 
     useEffect(()=>{
         pokeChain = [];
         pokeChainSrc = [];
         const dataFetch = async () => {
-            const data = await ( //fetching data for pokemon
-                await fetch(
-                `https://pokeapi.co/api/v2/pokemon/${pokeName}`
-                )
-            ).json();        
+            let data = [];
+            try{ 
+                data = await getData(`https://pokeapi.co/api/v2/pokemon/${pokeName}`); //get data for pokemon
+            }      
+            catch(e){
+               try{
+                    data = await getData(`https://pokeapi.co/api/v2/pokemon/${pokeNum}`);
+               }
+               catch(e){
+                console.log(112121314);
+               }
+            }
+            //console.log(data);
             setPokemon(data);
-            const abilityData = await ( //fetching data for ability
-                await fetch(data.abilities["0"].ability.url)
-            ).json();
+            const abilityData = await getData(data.abilities["0"].ability.url); //get data for ability
             let abilityObj = {
                 name : abilityData.name,
                 flavorText : abilityData.flavor_text_entries["0"].flavor_text
             }
             
             setAbility(abilityObj);
-            let data2 = await (
-                await fetch(
-                `https://pokeapi.co/api/v2/pokemon-species/${pokeName}`
-                )
-            ).json();  
+            let data2 = [];
+            try{
+                data2 = await getData(`https://pokeapi.co/api/v2/pokemon-species/${pokeName}`);
+            }catch(e){
+                try{
+                    data2 = await getData(`https://pokeapi.co/api/v2/pokemon-species/${pokeNum}`);
+                }catch(e){
+                    
+                }
+            }
             //console.log(data2.evolution_chain.url);
             setFlavorText(data2.flavor_text_entries["0"].flavor_text);
             for(let i = 0; i < data2.flavor_text_entries.length; i++){//Make sure to grab english flavor text
@@ -60,32 +76,38 @@ const ShowPokemon = ({paperTheme}) =>{
                     break;
                 }
             }
-            data2 = await ( //fetching data for pokemon species (evochains)
+            console.log(data2);
+            if(data2.evolution_chain !== null){
+                data2 = await ( //fetching data for pokemon species (evochains)
                 await fetch(
                 `${data2.evolution_chain.url}`
                 )
-            ).json(); 
-            data2 = data2.chain;
-            while((data2.evolves_to).length > 0){
-                pokeChain.push(data2.species.name);
-                data2 = data2.evolves_to["0"];
-                if((data2.evolves_to).length == 0){
-                    pokeChain.push(data2.species.name); 
+                ).json(); 
+                data2 = data2.chain;
+                while((data2.evolves_to).length > 0){
+                    pokeChain.push(data2.species.name);
+                    data2 = data2.evolves_to["0"];
+                    if((data2.evolves_to).length == 0){
+                        pokeChain.push(data2.species.name); 
+                    }
+                }
+                for(let i = 0; i < pokeChain.length; i++){
+                    let data = [];
+                    try{
+                        data = await getData(`https://pokeapi.co/api/v2/pokemon/${pokeChain[i]}`);
+                    }catch(e){
+                        break;
+                    }
+                    
+                    let tempObj = {
+                        src: data.sprites.other["official-artwork"].front_default,
+                        alt: `${pokeChain[i]}`
+                    };
+
+                    pokeChainSrc.push(tempObj);
                 }
             }
-            for(let i = 0; i < pokeChain.length; i++){
-                const data = await (
-                    await fetch(
-                    `https://pokeapi.co/api/v2/pokemon/${pokeChain[i]}`
-                    )
-                ).json();
-                let tempObj = {
-                    src: data.sprites.other["official-artwork"].front_default,
-                    alt: `${pokeChain[i]}`
-                };
-
-                pokeChainSrc.push(tempObj);
-            }
+            console.log("DONE LOADING")
             setLoaded(true);
         };
         //console.log(pokeChain);
@@ -147,7 +169,7 @@ const ShowPokemon = ({paperTheme}) =>{
                     <Typography marginTop = "10vh" variant = "h4" align = "center">Evolution Chain</Typography>
                     <div style = {{display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "center", gap: "0.5em", marginTop: "2vh"}}> 
                         {pokeChainSrc.map(elem => (
-                            <Link to = "" state={{ pokeName: `${elem.alt}`, temp: "testing"}}>
+                            <Link to = "" state={{ pokeName: `${elem.alt}`, pokeNum: pokeNum}}>
                                 <img src = {elem.src} style = {{width: "10rem"}} className = "image" alt = {elem.alt} onClick={() => window.location.reload(false)}></img>
                             </Link>
                         ))}
