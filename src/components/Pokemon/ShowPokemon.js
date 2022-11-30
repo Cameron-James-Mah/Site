@@ -10,6 +10,8 @@ import HelpIcon from '@mui/icons-material/Help';
 import Tooltip from '@mui/material/Tooltip';
 import SadPokemon from "../../images/SadPokemon.png"
 
+import {Link as MuiLink} from '@mui/material/';
+
 
 let pokeChain = []; //holds names of pokemon evo chain
 let pokeChainSrc = []; //holds javascript objects with properties for image src with corresponding pokemon name used for image alt and onclick events
@@ -204,7 +206,7 @@ const ShowPokemon = ({paperTheme}) =>{
                         
                         <Typography variant = "h5" marginTop={3} align = "center">Possible issues: </Typography>
                         <Typography variant = "h5" marginTop={2} marginLeft = {3}>1. Entered incorrect pokemon name(Note pokemon with multiple forms must have form included(ex: Aegislash-blade)). </Typography>
-                        <Typography variant = "h5" marginTop={2} marginLeft = {3}>2. PokeAPI is down.</Typography>
+                        <Typography variant = "h5" marginTop={2} marginLeft = {3}>2. <MuiLink href = "https://pokeapi.co/" rel="noopener noreferrer" target="_blank" >PokeAPI</MuiLink> is down.</Typography>
                         <Typography variant = "h5" align = "center" marginTop={5} marginLeft = {3}>Try searching pokemon name again or search with the pokemon number. You may also find your pokemon in the pokedex</Typography>
                         
                     </Paper>

@@ -619,7 +619,7 @@ function visualize(index){
     return(
     <>
     
-        <Typography marginTop = "2vh" variant = "h3" align = "center" color = "textPrimary" fontSize={"2.5vw"}>Sudoku Solver</Typography>
+        <Typography marginTop = "2vh" variant = "h3" align = "center" color = "textPrimary" fontSize={"2.7rem"}>Sudoku Solver</Typography>
         <div className="Sudoku-page">
     <table id="board">
         <colgroup>
