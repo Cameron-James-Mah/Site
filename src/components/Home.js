@@ -24,7 +24,7 @@ const Home = ({paperTheme}) => {
         <>
                 
                 <Container maxWidth = "md">
-                    <Typography variant = "h2" align = "center" gutterBottom paddingTop = "3vh">
+                    <Typography variant = "h2" align = "center" gutterBottom paddingTop = "3vh" sx={{fontFamily: ['Roboto']}}>
                         Welcome
                     </Typography>
                     <Typography variant = "h5" align = "center" paragraph paddingBottom = "3vh">
@@ -35,7 +35,7 @@ const Home = ({paperTheme}) => {
                 
                 <Container maxWidth = "md"  paddingTop = "2vh">
                 <Paper elevation={16} variant="outlined" marginBottom = "50vh" style={{ backgroundColor: paperTheme}}>
-                <Typography variant = "h3" align = "center" gutterBottom paddingTop = "5vh">
+                <Typography variant = "h3" align = "center" gutterBottom paddingTop = "5vh" sx={{fontFamily: ['Roboto']}}>
                             Projects:
                 </Typography>
                 <Grid
