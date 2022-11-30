@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/Site/static/css/main.aa357660.css",
-    "main.js": "/Site/static/js/main.af4b1031.js",
+    "main.js": "/Site/static/js/main.94896228.js",
     "static/media/Gen5.png": "/Site/static/media/Gen5.b8e8efb2aa3aa0c53e8a.png",
     "static/media/Gen1.png": "/Site/static/media/Gen1.0c6ccf25159b8575efe6.png",
     "static/media/Gen3.png": "/Site/static/media/Gen3.8a3822931d374c2276f6.png",
@@ -13,6 +13,7 @@
     "static/media/Gen4.png": "/Site/static/media/Gen4.ea970efc83e7c2d595ce.png",
     "static/media/Gen8.png": "/Site/static/media/Gen8.225a44b79c10a9572121.png",
     "static/media/Pokeball.png": "/Site/static/media/Pokeball.4ab53a6de9da39b07b4e.png",
+    "static/media/SadPokemon.png": "/Site/static/media/SadPokemon.938c7c774689a1306986.png",
     "static/media/Gen7.png": "/Site/static/media/Gen7.c2a5f3cb7a5cc8cf32a7.png",
     "static/media/BFS.gif": "/Site/static/media/BFS.97bcdc52b0571f324f99.gif",
     "static/media/pokedex.png": "/Site/static/media/pokedex.ff8da762f7d02d722b2e.png",
@@ -25,10 +26,10 @@
     "static/media/ValidBoard.png": "/Site/static/media/ValidBoard.69a9a128509d2a85a31a.png",
     "index.html": "/Site/index.html",
     "main.aa357660.css.map": "/Site/static/css/main.aa357660.css.map",
-    "main.af4b1031.js.map": "/Site/static/js/main.af4b1031.js.map"
+    "main.94896228.js.map": "/Site/static/js/main.94896228.js.map"
   },
   "entrypoints": [
     "static/css/main.aa357660.css",
-    "static/js/main.af4b1031.js"
+    "static/js/main.94896228.js"
   ]
 }
