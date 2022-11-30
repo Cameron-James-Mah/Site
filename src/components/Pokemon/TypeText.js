@@ -26,7 +26,6 @@ const TypeText = ({Type}) =>{ //Type is the pokemon type, first letter cap
     
     const [currentTheme, setCurrentTheme] = useState(); 
     useEffect(()=>{
-        console.log(Type+"Theme");
         setCurrentTheme(eval(Type+"Theme")); //dont want to have 18 if/switch statements so using eval and string concatenate 
     })
     return(
