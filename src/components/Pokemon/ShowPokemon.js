@@ -8,6 +8,7 @@ import "./styles.css";
 import TypeText from "./TypeText"
 import HelpIcon from '@mui/icons-material/Help';
 import Tooltip from '@mui/material/Tooltip';
+import SadPokemon from "../../images/SadPokemon.png"
 
 
 let pokeChain = []; //holds names of pokemon evo chain
@@ -21,6 +22,8 @@ const ShowPokemon = ({paperTheme}) =>{
     const [pokemon, setPokemon] = useState([]);
     const [flavorText, setFlavorText] = useState("");
     const [ability, setAbility] = useState([]);
+
+    const [isValid, setValid] = useState(true);
 
     function capitalizeFirstLetter(string) {
         return string.charAt(0).toUpperCase() + string.slice(1);
@@ -46,7 +49,7 @@ const ShowPokemon = ({paperTheme}) =>{
                     data = await getData(`https://pokeapi.co/api/v2/pokemon/${pokeNum}`);
                }
                catch(e){
-                console.log(112121314);
+                setValid(false);
                }
             }
             //console.log(data);
@@ -65,9 +68,10 @@ const ShowPokemon = ({paperTheme}) =>{
                 try{
                     data2 = await getData(`https://pokeapi.co/api/v2/pokemon-species/${pokeNum}`);
                 }catch(e){
-                    
+                     data2 = await getData(data.species.url);
                 }
             }
+             
             //console.log(data2.evolution_chain.url);
             setFlavorText(data2.flavor_text_entries["0"].flavor_text);
             for(let i = 0; i < data2.flavor_text_entries.length; i++){//Make sure to grab english flavor text
@@ -76,6 +80,7 @@ const ShowPokemon = ({paperTheme}) =>{
                     break;
                 }
             }
+            
             console.log(data2);
             if(data2.evolution_chain !== null){
                 data2 = await ( //fetching data for pokemon species (evochains)
@@ -174,13 +179,34 @@ const ShowPokemon = ({paperTheme}) =>{
                             </Link>
                         ))}
                     </div>
-                </Paper>
+                </Paper >
                 <br></br>
             </Container> 
         </>
         )
      }
-     else{
+     else if(!isValid){ //If could not find pokemon
+        return(
+            <>
+                <Container>
+                    <Paper elevation={16} variant="outlined" style={{ backgroundColor: paperTheme, marginTop: "5vh", marginBottom: "5vh"}}>
+                        <Typography variant = "h4" align = "center">Could not find Pokemon</Typography>
+                        <div align = "center">
+                            <img src = {SadPokemon} alt = "Sad Pokemon" align = "center"></img>
+                        </div>
+                        
+                        <Typography variant = "h5" marginTop={3} align = "center">Possible issues: </Typography>
+                        <Typography variant = "h5" marginTop={2} marginLeft = {3}>1. Entered incorrect pokemon name(Note pokemon with multiple forms must have form included(ex: Aegislash-blade)). </Typography>
+                        <Typography variant = "h5" marginTop={2} marginLeft = {3}>2. PokeAPI is down.</Typography>
+                        <Typography variant = "h5" align = "center" marginTop={5} marginLeft = {3}>Try searching pokemon name again or search with the pokemon number. You may also find your pokemon in the pokedex</Typography>
+                        
+                    </Paper>
+                </Container>
+
+            </>
+        )
+     }
+     else{ //Loading animation while pulling from api
         return(
             <div style={{display: 'flex', justifyContent: 'center', marginTop: "30vh"}}>
                 <CircularProgress size={"5rem"} />
