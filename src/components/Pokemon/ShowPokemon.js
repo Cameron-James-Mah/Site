@@ -205,7 +205,7 @@ const ShowPokemon = ({paperTheme}) =>{
                         </div>
                         
                         <Typography variant = "h5" marginTop={3} align = "center">Possible issues: </Typography>
-                        <Typography variant = "h5" marginTop={2} marginLeft = {3}>1. Entered incorrect pokemon name(Note pokemon with multiple forms must have form included(ex: Aegislash-blade)). </Typography>
+                        <Typography variant = "h5" marginTop={2} marginLeft = {3}>1. Entered incorrect pokemon name(NOTE: pokemon with multiple forms must have form included(ex: Aegislash-blade)). </Typography>
                         <Typography variant = "h5" marginTop={2} marginLeft = {3}>2. <MuiLink href = "https://pokeapi.co/" rel="noopener noreferrer" target="_blank" >PokeAPI</MuiLink> is down.</Typography>
                         <Typography variant = "h5" align = "center" marginTop={5} marginLeft = {3}>Try searching pokemon name again or search with the pokemon number. You may also find your pokemon in the pokedex</Typography>
                         
