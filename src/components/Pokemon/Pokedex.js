@@ -11,23 +11,37 @@ const Pokedex = ({paperTheme}) =>{
     const location = useLocation();
     const {Gen} = location.state;
     const [isLoaded, setLoaded] = useState(false);
-    const [pokeData, setPokeData] = useState([]);
+    //const [pokeData, setPokeData] = useState([]);
     useEffect(()=>{
         function capitalizeFirstLetter(string) {
             return string.charAt(0).toUpperCase() + string.slice(1);
         }
+
+        const dataInRange = async (len, offset) => {//Pull data for pokemon in range, using for each generation
+            const data = await ( 
+                await fetch(
+                `https://pokeapi.co/api/v2/pokemon?limit=${len}&offset=${offset}`
+                )
+            ).json(); 
+            return data;
+        }
+
         pokeCardInfo = [];
         //console.log(Gen);
         const dataFetch = async () => {
+            /*
             const data = await ( //fetching data for pokemon all pokemon
                 await fetch(
                 `https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0`
                 )
             ).json(); 
-            setPokeData(data.results);
-            
+            //setPokeData(data.results);
+            */
+           let data = [];
             if(Gen == 1){
-                for(let i = 0; i < 151; i++){//Get the data I need for each pokemon
+                let offset = 0;
+                data = await(dataInRange(151, offset))
+                for(let i = 0; i < data.results.length; i++){//Get the data I need for each pokemon
                     const tempData = await (
                         await fetch(
                             `${data.results[i].url}`
@@ -42,13 +56,15 @@ const Pokedex = ({paperTheme}) =>{
                         displayName: capitalizeFirstLetter(tempData.name),
                         src: tempData.sprites.other["official-artwork"].front_default,
                         types: tempArr,
-                        num: i+1
+                        num: i+1+offset
                     }
                     pokeCardInfo.push(tempObj);
                 }
             }
             else if(Gen == 2){
-                for(let i = 151; i < 251; i++){//Get the data I need for each pokemon
+                let offset = 151;
+                data = await(dataInRange(100, offset))
+                for(let i = 0; i < data.results.length; i++){//Get the data I need for each pokemon
                     const tempData = await (
                         await fetch(
                             `${data.results[i].url}`
@@ -69,7 +85,9 @@ const Pokedex = ({paperTheme}) =>{
                 }
             }
             else if(Gen == 3){
-                for(let i = 251; i < 386; i++){//Get the data I need for each pokemon
+                let offset = 251;
+                data = await(dataInRange(135, offset))
+                for(let i = 0; i < data.results.length; i++){//Get the data I need for each pokemon
                     const tempData = await (
                         await fetch(
                             `${data.results[i].url}`
@@ -90,7 +108,9 @@ const Pokedex = ({paperTheme}) =>{
                 }
             }
             else if(Gen == 4){
-                for(let i = 386; i < 493; i++){//Get the data I need for each pokemon
+                let offset = 386;
+                data = await(dataInRange(107, offset))
+                for(let i = 0; i < data.results.length; i++){//Get the data I need for each pokemon
                     const tempData = await (
                         await fetch(
                             `${data.results[i].url}`
@@ -111,7 +131,9 @@ const Pokedex = ({paperTheme}) =>{
                 }
             }
             else if(Gen == 5){
-                for(let i = 493; i < 649; i++){//Get the data I need for each pokemon
+                let offset = 493;
+                data = await(dataInRange(156, offset))
+                for(let i = 0; i < data.results.length; i++){//Get the data I need for each pokemon
                     const tempData = await (
                         await fetch(
                             `${data.results[i].url}`
@@ -132,7 +154,9 @@ const Pokedex = ({paperTheme}) =>{
                 }
             }
             else if(Gen == 6){
-                for(let i = 649; i < 721; i++){//Get the data I need for each pokemon
+                let offset = 649;
+                data = await(dataInRange(72, offset))
+                for(let i = 0; i < data.results.length; i++){//Get the data I need for each pokemon
                     const tempData = await (
                         await fetch(
                             `${data.results[i].url}`
@@ -153,7 +177,9 @@ const Pokedex = ({paperTheme}) =>{
                 }
             }
             else if(Gen == 7){
-                for(let i = 721; i < 809; i++){//Get the data I need for each pokemon
+                let offset = 721;
+                data = await(dataInRange(88, offset))
+                for(let i = 0; i < data.results.length; i++){//Get the data I need for each pokemon
                     const tempData = await (
                         await fetch(
                             `${data.results[i].url}`
@@ -174,7 +200,9 @@ const Pokedex = ({paperTheme}) =>{
                 }
             }
             else if(Gen == 8){
-                for(let i = 809; i < 905; i++){//Get the data I need for each pokemon
+                let offset = 809;
+                data = await(dataInRange(96, offset))
+                for(let i = 0; i < data.results.length; i++){//Get the data I need for each pokemon
                     const tempData = await (
                         await fetch(
                             `${data.results[i].url}`
@@ -195,6 +223,8 @@ const Pokedex = ({paperTheme}) =>{
                 }
             }
             else{ //All pokemon
+                let offset = 151;
+                data = await(dataInRange(905, 0))
                 for(let i = 0; i < 906; i++){//Get the data I need for each pokemon
                     const tempData = await (
                         await fetch(
