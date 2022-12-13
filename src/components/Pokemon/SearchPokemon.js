@@ -1,16 +1,33 @@
 
-import { TextField, Button, Typography } from "@mui/material";
+import { TextField, Button, Typography, Autocomplete, CircularProgress } from "@mui/material";
 import Pokeball from "../../images/Pokeball.png"
 import pokeBG from "../../images/pokeBG.png"
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+
+let pokemons = [];
+
 const SearchPokemon = () =>{
     const [poke, setPoke] = useState(); //Holds entered name, to be sent to showPokemon so I know where to pull from api
-    function updatePoke(e){
-        setPoke(e.target.value.toLowerCase());
-        //console.log(poke);
-    }
-    return(
+    const [isLoaded, setLoaded] = useState(false);
+    useEffect(() => {
+        const dataFetch = async () => {
+            const data = await ( //fetching data for pokemon all pokemon
+                await fetch(
+                `https://pokeapi.co/api/v2/pokemon?limit=1500&offset=0`
+                )
+            ).json(); 
+            for(let i = 0; i < data.results.length; i++){
+                pokemons.push(data.results[i].name)
+            }
+            setLoaded(true);
+            //console.log(1);
+            //console.log(pokemons)
+        }
+        dataFetch();
+    },[])
+    if(isLoaded){
+        return(
         <>
             <div align = "center" style = {{marginTop: "4vh"}}>
                 <Typography variant = "h2" sx={{fontFamily: ['London Stokes']}} >Pokemon Search</Typography>
@@ -18,7 +35,16 @@ const SearchPokemon = () =>{
             </div>
             
             <div align = "center" style = {{marginTop: "4vh"}}>
-                    <TextField id="pokeName" label="Pokemon Name" variant="outlined" onChange = {updatePoke} />
+                <Autocomplete    
+                    options = {pokemons}
+                    sx={{ width: 300 }}
+                    poke={poke}
+                    onChange={(e,v) => setPoke(v)}
+                    renderOption={(props, option) => <li {...props}>{option}</li>}
+                    renderInput={(params) => <TextField {...params} id="pokeName" label="Pokemon Name" variant="outlined" onChange={({ target }) => setPoke(target.value)}/>}
+                    ListboxProps={{style:{maxHeight: '150px', }}}
+                    />
+                    
             </div>
             <div align = "center" style = {{marginTop: "4vh"}}>
                 <Button component = {Link} to = "/showPokemon" state={{ pokeName: poke, temp: "testing"}}  variant="outlined" paddingTop = "12vh" >Search</Button>
@@ -31,6 +57,16 @@ const SearchPokemon = () =>{
             </div>
         </>
     )
+    }
+    else{
+        return(
+            <div style={{display: 'flex', justifyContent: 'center', marginTop: "30vh"}}>
+                <CircularProgress size={"5rem"} />
+            </div>
+            
+        )
+    }
+    
 }
 
 export default SearchPokemon;

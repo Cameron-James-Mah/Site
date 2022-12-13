@@ -223,7 +223,6 @@ const Pokedex = ({paperTheme}) =>{
                 }
             }
             else{ //All pokemon
-                let offset = 151;
                 data = await(dataInRange(905, 0))
                 for(let i = 0; i < 906; i++){//Get the data I need for each pokemon
                     const tempData = await (

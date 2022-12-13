@@ -20,6 +20,9 @@ const ShowPokemon = ({paperTheme}) =>{
     const location = useLocation();
     const [isLoaded, setLoaded] = useState(false);
     let {pokeName} = location.state;
+    if(pokeName != null){
+        pokeName = pokeName.toLowerCase();
+    }
     let {pokeNum} = location.state;
     const [pokemon, setPokemon] = useState([]);
     const [flavorText, setFlavorText] = useState("");
@@ -56,7 +59,14 @@ const ShowPokemon = ({paperTheme}) =>{
             }
             //console.log(data);
             setPokemon(data);
-            const abilityData = await getData(data.abilities["0"].ability.url); //get data for ability
+            let abilityData = [];
+            try{
+                abilityData = await getData(data.abilities["0"].ability.url); //get data for ability
+            }
+            catch(e){
+                setValid(false);
+            }
+            
             let abilityObj = {
                 name : abilityData.name,
                 flavorText : abilityData.flavor_text_entries["0"].flavor_text
@@ -77,7 +87,12 @@ const ShowPokemon = ({paperTheme}) =>{
                 try{
                     data2 = await getData(`https://pokeapi.co/api/v2/pokemon-species/${pokeNum}`);
                 }catch(e){
-                     data2 = await getData(data.species.url);
+                     try{
+                        data2 = await getData(data.species.url);
+                     }
+                     catch{
+                        setValid(false);
+                     }
                 }
             }
              
@@ -207,6 +222,7 @@ const ShowPokemon = ({paperTheme}) =>{
                         <Typography variant = "h5" marginTop={3} align = "center">Possible issues: </Typography>
                         <Typography variant = "h5" marginTop={2} marginLeft = {3}>1. Entered incorrect pokemon name(NOTE: pokemon with multiple forms must have form included(ex: Aegislash-blade)). </Typography>
                         <Typography variant = "h5" marginTop={2} marginLeft = {3}>2. <MuiLink href = "https://pokeapi.co/" rel="noopener noreferrer" target="_blank" >PokeAPI</MuiLink> is down.</Typography>
+                        <Typography variant = "h5" marginTop={2} marginLeft = {3}>3. If you think this is a bug, please open an issue in my github repo here: <MuiLink href = "https://github.com/Cameron-James-Mah/Site/issues" rel="noopener noreferrer" target="_blank" >https://github.com/Cameron-James-Mah/Site/issues</MuiLink></Typography>
                         <Typography variant = "h5" align = "center" marginTop={5} marginLeft = {3}>Try searching pokemon name again or search with the pokemon number. You may also find your pokemon in the pokedex</Typography>
                         
                     </Paper>
