@@ -18,7 +18,7 @@ let pokeChainSrc = []; //holds javascript objects with properties for image src 
 
 const ShowPokemon = ({paperTheme}) =>{
     const location = useLocation();
-    const [isLoaded, setLoaded] = useState(false);
+    const [isLoaded, setLoaded] = useState(false); //To determine whether I have all my api data
     let {pokeName} = location.state;
     if(pokeName != null){
         pokeName = pokeName.toLowerCase();
@@ -34,7 +34,7 @@ const ShowPokemon = ({paperTheme}) =>{
         return string.charAt(0).toUpperCase() + string.slice(1);
     }
 
-    async function getData(url){
+    async function getData(url){ //function to fetch and return api data
         const data = await fetch(url);
         const res = await data.json();
         return res;
@@ -50,8 +50,8 @@ const ShowPokemon = ({paperTheme}) =>{
                 data = await getData(`https://pokeapi.co/api/v2/pokemon/${pokeName}`); //get data for pokemon
             }      
             catch(e){
-               try{
-                    data = await getData(`https://pokeapi.co/api/v2/pokemon/${pokeNum}`);
+               try{ //Sometimes pokemon cant be seatched via pokemon/ but ALL pokemon can be searched via their pokemon number
+                    data = await getData(`https://pokeapi.co/api/v2/pokemon/${pokeNum}`); 
                }
                catch(e){
                 setValid(false);
