@@ -8,11 +8,14 @@ import TypeText2 from "./TypeText2"
 let pokeCardInfo = []; //Pokemon card info contains name, image src, type(s) 
 
 const Pokedex = ({paperTheme}) =>{
+    let currentStep, maxSteps; //For my loading screen, progress info
+    const [progressText, setProgress] = useState(0);
     const location = useLocation();
     const {Gen} = location.state;
     const [isLoaded, setLoaded] = useState(false);
     //const [pokeData, setPokeData] = useState([]);
     useEffect(()=>{
+        currentStep = 0;
         function capitalizeFirstLetter(string) {
             return string.charAt(0).toUpperCase() + string.slice(1);
         }
@@ -26,6 +29,10 @@ const Pokedex = ({paperTheme}) =>{
             return data;
         }
 
+        function updateProgress(){
+            setProgress(`Loading pokemon: ${currentStep}/${maxSteps}`);
+        }
+        
         pokeCardInfo = [];
         //console.log(Gen);
         const dataFetch = async () => {
@@ -39,6 +46,7 @@ const Pokedex = ({paperTheme}) =>{
             */
            let data = [];
             if(Gen == 1){
+                maxSteps = 151;
                 let offset = 0;
                 data = await(dataInRange(151, offset))
                 for(let i = 0; i < data.results.length; i++){//Get the data I need for each pokemon
@@ -59,9 +67,13 @@ const Pokedex = ({paperTheme}) =>{
                         num: i+1+offset
                     }
                     pokeCardInfo.push(tempObj);
+                    currentStep++;
+                    updateProgress();
                 }
+
             }
             else if(Gen == 2){
+                maxSteps = 100;
                 let offset = 151;
                 data = await(dataInRange(100, offset))
                 for(let i = 0; i < data.results.length; i++){//Get the data I need for each pokemon
@@ -82,10 +94,15 @@ const Pokedex = ({paperTheme}) =>{
                         num: i+1
                     }
                     pokeCardInfo.push(tempObj);
+                    currentStep++;
+                    updateProgress();
                 }
+
+                
             }
             else if(Gen == 3){
                 let offset = 251;
+                maxSteps = 135;
                 data = await(dataInRange(135, offset))
                 for(let i = 0; i < data.results.length; i++){//Get the data I need for each pokemon
                     const tempData = await (
@@ -105,10 +122,15 @@ const Pokedex = ({paperTheme}) =>{
                         num: i+1
                     }
                     pokeCardInfo.push(tempObj);
+                    currentStep++;
+                    updateProgress();
                 }
+                
+                
             }
             else if(Gen == 4){
                 let offset = 386;
+                maxSteps = 107;
                 data = await(dataInRange(107, offset))
                 for(let i = 0; i < data.results.length; i++){//Get the data I need for each pokemon
                     const tempData = await (
@@ -128,10 +150,15 @@ const Pokedex = ({paperTheme}) =>{
                         num: i+1
                     }
                     pokeCardInfo.push(tempObj);
+                    currentStep++;
+                    updateProgress();
                 }
+                
+                
             }
             else if(Gen == 5){
                 let offset = 493;
+                maxSteps = 156;
                 data = await(dataInRange(156, offset))
                 for(let i = 0; i < data.results.length; i++){//Get the data I need for each pokemon
                     const tempData = await (
@@ -151,10 +178,15 @@ const Pokedex = ({paperTheme}) =>{
                         num: i+1
                     }
                     pokeCardInfo.push(tempObj);
+                    currentStep++;
+                    updateProgress();
                 }
+                
+                
             }
             else if(Gen == 6){
                 let offset = 649;
+                maxSteps = 72;
                 data = await(dataInRange(72, offset))
                 for(let i = 0; i < data.results.length; i++){//Get the data I need for each pokemon
                     const tempData = await (
@@ -174,10 +206,15 @@ const Pokedex = ({paperTheme}) =>{
                         num: i+1
                     }
                     pokeCardInfo.push(tempObj);
+                    currentStep++;
+                    updateProgress();
                 }
+                
+                
             }
             else if(Gen == 7){
                 let offset = 721;
+                maxSteps = 88;
                 data = await(dataInRange(88, offset))
                 for(let i = 0; i < data.results.length; i++){//Get the data I need for each pokemon
                     const tempData = await (
@@ -197,10 +234,15 @@ const Pokedex = ({paperTheme}) =>{
                         num: i+1
                     }
                     pokeCardInfo.push(tempObj);
+                    currentStep++;
+                    updateProgress();
                 }
+                
+                
             }
             else if(Gen == 8){
                 let offset = 809;
+                maxSteps = 96;
                 data = await(dataInRange(96, offset))
                 for(let i = 0; i < data.results.length; i++){//Get the data I need for each pokemon
                     const tempData = await (
@@ -220,16 +262,29 @@ const Pokedex = ({paperTheme}) =>{
                         num: i+1
                     }
                     pokeCardInfo.push(tempObj);
+                    currentStep++;
+                    updateProgress();
                 }
+                
+                
+                
             }
             else{ //All pokemon
                 data = await(dataInRange(905, 0))
-                for(let i = 0; i < 906; i++){//Get the data I need for each pokemon
-                    const tempData = await (
-                        await fetch(
-                            `${data.results[i].url}`
-                        )
-                    ).json();
+                maxSteps = 905;
+                for(let i = 0; i < 905; i++){//Get the data I need for each pokemon
+                    let tempData = [];
+                    try{
+                        tempData = await (
+                            await fetch(
+                                `${data.results[i].url}`
+                            )
+                        ).json();
+                    }
+                    catch{
+                        console.log(i);
+                    }
+                    
                     let tempArr = [];
                     for(let i = 0; i < tempData.types.length; i++){
                         tempArr.push(capitalizeFirstLetter(tempData.types[i].type.name));
@@ -242,7 +297,11 @@ const Pokedex = ({paperTheme}) =>{
                         num: i+1
                     }
                     pokeCardInfo.push(tempObj);
+                    currentStep++;
+                    updateProgress();
                 }
+                //console.log("Loaded all");
+                
             }
             setLoaded(true);
         }
@@ -302,10 +361,12 @@ const Pokedex = ({paperTheme}) =>{
     }
     else{
         return(
+            <>
             <div style={{display: 'flex', justifyContent: 'center', marginTop: "30vh"}}>
                 <CircularProgress size={"5rem"} />
             </div>
-            
+            <Typography variant = "h5" align = "center" marginTop={5}>{progressText}</Typography>
+            </>
         )
     }
     

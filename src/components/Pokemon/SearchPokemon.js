@@ -11,6 +11,7 @@ const SearchPokemon = () =>{
     const [poke, setPoke] = useState(); //Holds entered name, to be sent to showPokemon so I know where to pull from api
     const [isLoaded, setLoaded] = useState(false);
     useEffect(() => {
+        pokemons = [];
         const dataFetch = async () => {
             const data = await ( //fetching data for pokemon all pokemon
                 await fetch(
@@ -50,7 +51,7 @@ const SearchPokemon = () =>{
                 <Button component = {Link} to = "/showPokemon" state={{ pokeName: poke, temp: "testing"}}  variant="outlined" paddingTop = "12vh" >Search</Button>
             </div>
             <div align = "center" style = {{marginTop: "4vh"}}>
-                <Typography marginTop = "6vh" variant = "h7" sx={{ fontWeight: 'bold' }}>NOTE: Pokemon such as Aegislash and Deoxys that have multiple forms must have their form included(ex: Aegislash-blade, Deoxys-attack, etc). Pokemon can also be searched via their pokemon number(ex: Bulbasaur is 1, Ivysaur is 2, etc) </Typography>
+                <Typography marginTop = "6vh" variant = "h7" sx={{ fontWeight: 'bold' }}>NOTE: Pokemon can also be searched via their pokemon number(ex: Bulbasaur is 1, Ivysaur is 2, etc) </Typography>
             </div>
             <div align = "right" style = {{marginTop: "4vh", marginRight: "4vw"}}>
                 <img src = {pokeBG} width = "300vw" mix-blend-mode = "multiply" paddingBottom = "10vh" align = "center"></img>
