@@ -1,4 +1,6 @@
 import { Routes, Route } from 'react-router-dom'
+
+//Components
 import Home from './components/Home.js'
 import Pathing from './components/Pathing/Pathing.js';
 import Sudoku from './components/Sudoku/Sudoku';
@@ -6,9 +8,10 @@ import PathingSummary from './components/Pathing/Summary.js';
 import SudokuSummary from './components/Sudoku/Summary.js';
 import ShowPokemon from './components/Pokemon/ShowPokemon.js';
 import SearchPokemon from './components/Pokemon/SearchPokemon.js';
-import Test from "./components/test"
 import Pokedex from './components/Pokemon/Pokedex.js';
 import PokedexGenSelect from './components/Pokemon/PokedexGenSelect.js';
+import PokeSummary from './components/Pokemon/PokeSummary'
+
 import { ThemeProvider, CssBaseline, createTheme } from '@mui/material/';
 import Menubar from './components/Menubar';
 import { useState } from "react";
@@ -27,8 +30,8 @@ const lightTheme = createTheme({
 });
 
 
-
 function App() {
+  //Paper theme
   const [homePaperTheme, setHomePaperTheme] = useState(grey[200]);
   const [currentTheme, setTheme] = useState(lightTheme);
     const setThemeCallback = (childTheme) =>{
@@ -54,11 +57,11 @@ function App() {
         <Route path = "/pathing" element={<Pathing />}></Route>
         <Route path = "/pathingSummary" element={<PathingSummary paperTheme={homePaperTheme}/>}></Route>
         <Route path = "/sudokuSummary" element={<SudokuSummary paperTheme={homePaperTheme}/>}></Route>
-        <Route path = "/test" element={<Test/>}></Route>
         <Route path = "/showPokemon" element={<ShowPokemon paperTheme={homePaperTheme}/>}></Route>
         <Route path = "/searchPokemon" element={<SearchPokemon/>}></Route>
         <Route path = "/genSelect" element={<PokedexGenSelect paperTheme={homePaperTheme}/>}></Route>
         <Route path = "/genSelect/pokedex" element={<Pokedex paperTheme={homePaperTheme}/>}></Route>
+        <Route path = "/pokemonSummary" element={<PokeSummary paperTheme={homePaperTheme}/>}></Route>
       </Routes>
       </ThemeProvider>
     </>

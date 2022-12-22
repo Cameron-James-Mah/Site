@@ -64,7 +64,6 @@ const Pokedex = ({paperTheme}) =>{
                         displayName: capitalizeFirstLetter(tempData.name),
                         src: tempData.sprites.other["official-artwork"].front_default,
                         types: tempArr,
-                        num: i+1+offset
                     }
                     pokeCardInfo.push(tempObj);
                     currentStep++;
@@ -91,7 +90,6 @@ const Pokedex = ({paperTheme}) =>{
                         displayName: capitalizeFirstLetter(tempData.name),
                         src: tempData.sprites.other["official-artwork"].front_default,
                         types: tempArr,
-                        num: i+1
                     }
                     pokeCardInfo.push(tempObj);
                     currentStep++;
@@ -119,7 +117,6 @@ const Pokedex = ({paperTheme}) =>{
                         displayName: capitalizeFirstLetter(tempData.name),
                         src: tempData.sprites.other["official-artwork"].front_default,
                         types: tempArr,
-                        num: i+1
                     }
                     pokeCardInfo.push(tempObj);
                     currentStep++;
@@ -147,7 +144,6 @@ const Pokedex = ({paperTheme}) =>{
                         displayName: capitalizeFirstLetter(tempData.name),
                         src: tempData.sprites.other["official-artwork"].front_default,
                         types: tempArr,
-                        num: i+1
                     }
                     pokeCardInfo.push(tempObj);
                     currentStep++;
@@ -175,7 +171,6 @@ const Pokedex = ({paperTheme}) =>{
                         displayName: capitalizeFirstLetter(tempData.name),
                         src: tempData.sprites.other["official-artwork"].front_default,
                         types: tempArr,
-                        num: i+1
                     }
                     pokeCardInfo.push(tempObj);
                     currentStep++;
@@ -203,7 +198,6 @@ const Pokedex = ({paperTheme}) =>{
                         displayName: capitalizeFirstLetter(tempData.name),
                         src: tempData.sprites.other["official-artwork"].front_default,
                         types: tempArr,
-                        num: i+1
                     }
                     pokeCardInfo.push(tempObj);
                     currentStep++;
@@ -231,7 +225,6 @@ const Pokedex = ({paperTheme}) =>{
                         displayName: capitalizeFirstLetter(tempData.name),
                         src: tempData.sprites.other["official-artwork"].front_default,
                         types: tempArr,
-                        num: i+1
                     }
                     pokeCardInfo.push(tempObj);
                     currentStep++;
@@ -259,7 +252,6 @@ const Pokedex = ({paperTheme}) =>{
                         displayName: capitalizeFirstLetter(tempData.name),
                         src: tempData.sprites.other["official-artwork"].front_default,
                         types: tempArr,
-                        num: i+1
                     }
                     pokeCardInfo.push(tempObj);
                     currentStep++;
@@ -294,7 +286,6 @@ const Pokedex = ({paperTheme}) =>{
                         displayName: capitalizeFirstLetter(tempData.name),
                         src: tempData.sprites.other["official-artwork"].front_default,
                         types: tempArr,
-                        num: i+1
                     }
                     pokeCardInfo.push(tempObj);
                     currentStep++;
@@ -330,7 +321,7 @@ const Pokedex = ({paperTheme}) =>{
                         {pokeCardInfo.map(elem =>(
                             <Grid item  key={pokeCardInfo.indexOf(elem)}>
                              <Card>
-                                <CardActionArea component = {Link} to = "/showPokemon" state={{ pokeName: elem.name, pokeNum: elem.num}}>
+                                <CardActionArea component = {Link} to = "/showPokemon" state={{ pokeName: elem.name}}>
                                     <CardMedia
                                     component="img"
                                     height="140"

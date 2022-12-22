@@ -12,6 +12,7 @@ import Gen8 from "../../images/Gen8.png"
 import Gen9 from "../../images/Gen9.png"
 import GenAll from "../../images/GenAll.png"
 
+//Card data for all pokemon generations
 const cardData = [
     {title: "Generation 1", src: Gen1, gen: 1},
     {title: "Generation 2", src: Gen2, gen: 2},

@@ -23,7 +23,6 @@ const ShowPokemon = ({paperTheme}) =>{
     if(pokeName != null){
         pokeName = pokeName.toLowerCase();
     }
-    let {pokeNum} = location.state;
     const [pokemon, setPokemon] = useState([]);
     const [flavorText, setFlavorText] = useState("");
     const [ability, setAbility] = useState([]);
@@ -50,12 +49,7 @@ const ShowPokemon = ({paperTheme}) =>{
                 data = await getData(`https://pokeapi.co/api/v2/pokemon/${pokeName}`); //get data for pokemon
             }      
             catch(e){
-               try{ //Sometimes pokemon cant be seatched via pokemon/ but ALL pokemon can be searched via their pokemon number
-                    data = await getData(`https://pokeapi.co/api/v2/pokemon/${pokeNum}`); 
-               }
-               catch(e){
                 setValid(false);
-               }
             }
             //console.log(data);
             setPokemon(data);
@@ -85,15 +79,13 @@ const ShowPokemon = ({paperTheme}) =>{
                 data2 = await getData(`https://pokeapi.co/api/v2/pokemon-species/${pokeName}`);
             }catch(e){
                 try{
-                    data2 = await getData(`https://pokeapi.co/api/v2/pokemon-species/${pokeNum}`);
-                }catch(e){
-                     try{
-                        data2 = await getData(data.species.url);
-                     }
-                     catch{
-                        setValid(false);
-                     }
+                    data2 = await getData(data.species.url);
+                 }
+                 catch{
+                    setValid(false);
+                
                 }
+                
             }
              
             //console.log(data2.evolution_chain.url);
@@ -108,9 +100,9 @@ const ShowPokemon = ({paperTheme}) =>{
             //console.log(data2);
             if(data2.evolution_chain !== null){
                 data2 = await ( //fetching data for pokemon species (evochains)
-                await fetch(
-                `${data2.evolution_chain.url}`
-                )
+                    await fetch(
+                    `${data2.evolution_chain.url}`
+                    )
                 ).json(); 
                 data2 = data2.chain;
                 while((data2.evolves_to).length > 0){
@@ -198,7 +190,7 @@ const ShowPokemon = ({paperTheme}) =>{
                     <Typography marginTop = "10vh" variant = "h4" align = "center">Evolution Chain</Typography>
                     <div style = {{display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "center", gap: "0.5em", marginTop: "2vh"}}> 
                         {pokeChainSrc.map(elem => (
-                            <Link to = "" state={{ pokeName: `${elem.alt}`, pokeNum: pokeNum}}>
+                            <Link to = "" state={{ pokeName: `${elem.alt}`}}>
                                 <img src = {elem.src} style = {{width: "10rem"}} className = "image" alt = {elem.alt} onClick={() => window.location.reload(false)}></img>
                             </Link>
                         ))}
