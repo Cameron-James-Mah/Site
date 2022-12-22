@@ -1,6 +1,4 @@
-import { CssBaseline, AppBar, Toolbar, Typography } from "@mui/material";
-import HomeIcon from '@mui/icons-material/Home';
-import IconButton from '@mui/material/IconButton';
+import { CssBaseline, AppBar, Toolbar, Typography, Box } from "@mui/material";
 import { Link } from 'react-router-dom'
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { blue, green } from '@mui/material/colors';
@@ -9,19 +7,15 @@ import { styled } from '@mui/material/styles';
 import Switch from '@mui/material/Switch';
 import { useState } from "react";
 
-const darkTheme = createTheme({
-  palette: {
-      mode: 'dark'
-    },
-});
+//MUI icons
+import HomeIcon from '@mui/icons-material/Home';
+import IconButton from '@mui/material/IconButton';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import GitHubIcon from '@mui/icons-material/GitHub';
 
-const lightTheme = createTheme({
-  palette: {
-      mode: 'light'
-    },
-});
+import {Link as MuiLink} from '@mui/material/';
 
-
+//Light/Dark mode switch
 const MaterialUISwitch = styled(Switch)(({ theme }) => ({
   width: 62,
   height: 34,
@@ -71,14 +65,14 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
 
 
 const Menubar = ({parentCallback}) =>{
-  const [currentTheme, setTheme] = useState(lightTheme);
+  const [currentTheme, setTheme] = useState("light"); //Store current theme type
   function switchTheme(){
-    if(currentTheme === darkTheme){
-      setTheme(lightTheme);
+    if(currentTheme === "dark"){
+      setTheme("light")
       parentCallback("light");
     }
     else{
-      setTheme(darkTheme);
+      setTheme("dark")
       parentCallback("dark");
     }
   }
@@ -86,15 +80,26 @@ const Menubar = ({parentCallback}) =>{
     <>
             <AppBar position = "relative">
                 <Toolbar>
-                    <IconButton aria-label = "Home Icon" size = "medium" component = {Link} to = "/">
-                        <HomeIcon>
-                        </HomeIcon>
-                        <Typography variant = "h5">Home</Typography>
-                        </IconButton>
-                        <FormControlLabel
-                        control={<MaterialUISwitch sx={{ m: 1 }} defaultChecked />}
-                        onClick={switchTheme}
-      />
+                  <Box display='flex' flexGrow={1}>
+                    <IconButton aria-label = "Home icon" size = "medium" component = {Link} to = "/">
+                      <HomeIcon/>
+                      <Typography variant = "h5">Home</Typography>
+                    </IconButton>
+                    <FormControlLabel
+                      control={<MaterialUISwitch sx={{ m: 1 }} defaultChecked />}
+                      onClick={switchTheme}/>
+                  </Box>
+                    <MuiLink href = "https://github.com/Cameron-James-Mah" rel="noopener noreferrer" target="_blank">
+                      <IconButton aria-label = "Github icon" size = "large">
+                      <GitHubIcon></GitHubIcon>
+                    </IconButton>
+                      </MuiLink>
+
+                      <MuiLink href = "https://www.linkedin.com/in/cameron-mah-327725233/" rel="noopener noreferrer" target="_blank">
+                      <IconButton aria-label = "linkedin icon" size = "large">
+                      <LinkedInIcon />
+                    </IconButton>
+                      </MuiLink>
                 </Toolbar>
             </AppBar>
     </>
