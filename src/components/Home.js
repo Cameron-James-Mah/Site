@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from 'react-router-dom'
 import { Typography, AppBar, Card, CardActions, CardContent, CardMedia, CssBaseline, Grid, Toolbar, Container, Button } from "@mui/material"; 
 import { createTheme, styled, ThemeProvider } from "@mui/material/styles";
@@ -19,7 +19,9 @@ const cardData = [
 ]
 
 const Home = ({paperTheme}) => {
-    
+    useEffect(()=>{
+        window.scrollTo(0, 0);
+    },[])
     return (
         <>
                 

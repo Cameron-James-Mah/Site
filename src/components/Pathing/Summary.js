@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Container, Paper, Typography, Box } from "@mui/material";
 import DFS from "../../images/DFS.png"
 import BFS from "../../images/BFS.gif"
@@ -7,6 +7,9 @@ import "./styles.css";
 //Thinking make a grid, 1 column space between each column
 //Each row a paragraph
 const Summary = ({paperTheme}) => {
+    useEffect(()=>{
+        window.scrollTo(0, 0);
+    })
     return(
         <>
             <Container maxWidth = "lg" >

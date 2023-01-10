@@ -2,8 +2,12 @@ import { Container, Paper, Typography, Box } from "@mui/material";
 import {Link as MuiLink} from '@mui/material/';
 import pokeSearchGIF from '../../images/pokeSearchGIF.gif'
 import pokedexGIF from '../../images/pokedexGIF.gif'
+import { useEffect } from "react";
 
 const PokeSummary = ({paperTheme}) =>{
+    useEffect(()=> {
+        window.scrollTo(0, 0);
+    },[])
     return(
         <>
             <Container>

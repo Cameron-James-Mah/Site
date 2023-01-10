@@ -11,6 +11,7 @@ const SearchPokemon = () =>{
     const [poke, setPoke] = useState(); //Holds entered name, to be sent to showPokemon so I know where to pull from api
     const [isLoaded, setLoaded] = useState(false);
     useEffect(() => {
+        window.scrollTo(0, 0);
         pokemons = [];
         const dataFetch = async () => {
             const data = await ( //fetching data for pokemon all pokemon

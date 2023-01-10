@@ -69,6 +69,7 @@ let isVis = false;
 const Sudoku = () => {
 
     useEffect(() =>{//Reset state of component
+        window.scrollTo(0, 0);
         changeCache = [];
         sudoku = [];
         solved = false;

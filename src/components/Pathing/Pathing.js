@@ -20,6 +20,7 @@ let speed2; //Speed for the playback path. Both speeds adjusted in solve()
 
 const Pathing = () => {
     useEffect(() =>{//Reset state of component
+        window.scrollTo(0, 0);
         board = [];
         visitedSet.clear();
         selected = "";

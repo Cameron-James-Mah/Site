@@ -46,6 +46,7 @@ function App() {
             //console.log(2);
         }
     }
+    
   return (
     <>
     <ThemeProvider theme = {currentTheme}>

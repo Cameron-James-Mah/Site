@@ -41,6 +41,7 @@ const ShowPokemon = ({paperTheme}) =>{
 
 
     useEffect(()=>{
+        window.scrollTo(0, 0);
         pokeChain = [];
         pokeChainSrc = [];
         const dataFetch = async () => {

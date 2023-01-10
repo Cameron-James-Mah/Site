@@ -15,6 +15,7 @@ const Pokedex = ({paperTheme}) =>{
     const [isLoaded, setLoaded] = useState(false);
     //const [pokeData, setPokeData] = useState([]);
     useEffect(()=>{
+        window.scrollTo(0, 0);
         currentStep = 0;
         function capitalizeFirstLetter(string) {
             return string.charAt(0).toUpperCase() + string.slice(1);
