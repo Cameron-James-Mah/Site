@@ -26,7 +26,9 @@ const cardData = [
 ]
 
 const PokedexGenSelect = ({paperTheme}) =>{
-    
+    useEffect(()=>{
+        window.scrollTo(0, 0);
+    }, [])
     return(
         <>
             <Container maxWidth = "lg">

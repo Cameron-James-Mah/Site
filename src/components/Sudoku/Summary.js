@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Container, Paper, Typography, Box } from "@mui/material";
 import SudokuCode from "../../images/SudokuCode.png"
 import ValidBoard from "../../images/ValidBoard.png"
 import SolvedBoard from "../../images/SolvedBoard.png"
 const Summary = ({paperTheme}) =>{
+    useEffect(()=>{
+        window.scrollTo(0, 0);
+    },[])
     return (
         <>
             <Container maxWidth = "lg">
