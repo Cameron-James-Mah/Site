@@ -8,6 +8,9 @@ import { grey } from "@mui/material/colors";
 import { Paper } from "@mui/material";
 import pokeball from "../images/Pokeball.png"
 import pokedex from "../images/pokedex.png"
+import chess from "../images/Chess.png"
+import {Link as MuiLink} from '@mui/material/';
+
 
 
 //Card data for different projects
@@ -15,7 +18,12 @@ const cardData = [
     {title: "2D pathing visualizer", description: "Visualizes different 2d pathing algorithms", src: pathing, link: "pathing", link2: "pathingSummary"},
     {title: "Sudoku Solver", description: "Visualizes sudoku solving algorithm", src: sudoku, link: "sudoku", link2: "sudokuSummary"},
     {title: "Poke Search", description: "Find information on a specific pokemon", src: pokeball, link: "searchPokemon", link2: "pokemonSummary"},
-    {title: "Pokedex", description: "Browse all Pokemon", src: pokedex, link: "genSelect", link2: "pokemonSummary"}
+    {title: "Pokedex", description: "Browse all Pokemon", src: pokedex, link: "genSelect", link2: "pokemonSummary"},
+]
+
+//Full stack projects hosted elsewhere
+const cardData2 = [
+    {title: "Chess Rooms", description: "Site where users can join friends or strangers in a quick game of chess", src: chess, link: "https://chess-rooms.onrender.com/", link2: ""}
 ]
 
 const Home = ({paperTheme}) => {
@@ -52,7 +60,9 @@ const Home = ({paperTheme}) => {
                 
                 {cardData.map(elem => (
                     <Grid item  key={cardData.indexOf(elem)}>
-                        <Card>
+                        <Card
+                        sx={{width: 300}}
+                            >
                             <CardMedia
                                 component="img"
                                 height="140"
@@ -76,7 +86,46 @@ const Home = ({paperTheme}) => {
                         </Card>
                      </Grid>
                 ))}
-            </Grid>    
+            </Grid> 
+            <Grid
+                container
+                spacing={10}
+                direction="row"
+                alignItems="center"
+                justifyContent="center"
+                paddingTop = "2vh"
+                paddingBottom = "9vh"
+            >
+                
+                {cardData2.map(elem => (
+                    <Grid item  key={cardData2.indexOf(elem)}>
+                        <Card
+                        sx={{width: 300}}
+                            >
+                            <CardMedia
+                                component="img"
+                                height="140"
+                                image= {elem.src}
+                                alt="temp"
+                                sx={{ padding: "1em 1em 0 1em", objectFit: "contain" }}
+                                
+                                />
+                            <CardContent>
+                                <Typography gutterBottom variant="h5" component="div">
+                                    {elem.title}
+                                </Typography>
+                                <Typography variant="body2">
+                                    {elem.description}
+                                </Typography> 
+                            </CardContent>
+                            <CardActions style={{justifyContent: 'space-between'}}>
+                                <MuiLink style={{textDecoration: 'none'}} href = {elem.link} rel="noopener noreferrer" target="_blank" > <Button color = "primary" size="small">Try it out!</Button></MuiLink>
+                                <Button component = {Link} color = "primary" to = {elem.link2} size="small">Summary</Button>    
+                            </CardActions>
+                        </Card>
+                     </Grid>
+                ))}
+            </Grid>   
             </Paper>
             </Container>
             <br/>
