@@ -9,6 +9,7 @@ import { Paper } from "@mui/material";
 import pokeball from "../images/Pokeball.png"
 import pokedex from "../images/pokedex.png"
 import chess from "../images/Chess.png"
+import cuberunner from "../images/CubeRunner.png"
 import {Link as MuiLink} from '@mui/material/';
 
 
@@ -23,7 +24,8 @@ const cardData = [
 
 //Full stack projects hosted elsewhere
 const cardData2 = [
-    {title: "Chess Rooms", description: "Site where users can join friends or strangers in a quick game of chess", src: chess, link: "https://chess-rooms.onrender.com/", link2: ""}
+    {title: "Chess Rooms", description: "Site where users can join friends or strangers in a quick game of chess", src: chess, link: "https://chess-rooms.onrender.com/", link2: ""},
+    {title: "Cube Runner", description: "Remake of old flash game Cube Runner", src: cuberunner, link: "https://cuberunner.onrender.com/", link2: ""}
 ]
 
 const Home = ({paperTheme}) => {
