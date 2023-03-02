@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/Site/static/css/main.a6085e6e.css",
-    "main.js": "/Site/static/js/main.0aea19dd.js",
+    "main.js": "/Site/static/js/main.fc151e9e.js",
     "static/media/pokedexGIF.gif": "/Site/static/media/pokedexGIF.99b92bb3ec34859cbfce.gif",
     "static/media/pokeSearchGIF.gif": "/Site/static/media/pokeSearchGIF.8616ab709f9eafd55b11.gif",
     "static/media/Gen5.png": "/Site/static/media/Gen5.b8e8efb2aa3aa0c53e8a.png",
@@ -24,15 +24,16 @@
     "static/media/GenAll.png": "/Site/static/media/GenAll.92d0660034631691e63f.png",
     "static/media/SudokuCode.png": "/Site/static/media/SudokuCode.1f068184d7ea5608de41.png",
     "static/media/sudoku.gif": "/Site/static/media/sudoku.692337e11eeb6671e6e8.gif",
+    "static/media/CubeRunner.png": "/Site/static/media/CubeRunner.28214bb57984363bd14a.png",
     "static/media/SolvedBoard.png": "/Site/static/media/SolvedBoard.e35dc0616c04cf38a922.png",
     "static/media/DFS.png": "/Site/static/media/DFS.e371f678f22a885787e0.png",
     "static/media/ValidBoard.png": "/Site/static/media/ValidBoard.69a9a128509d2a85a31a.png",
     "index.html": "/Site/index.html",
     "main.a6085e6e.css.map": "/Site/static/css/main.a6085e6e.css.map",
-    "main.0aea19dd.js.map": "/Site/static/js/main.0aea19dd.js.map"
+    "main.fc151e9e.js.map": "/Site/static/js/main.fc151e9e.js.map"
   },
   "entrypoints": [
     "static/css/main.a6085e6e.css",
-    "static/js/main.0aea19dd.js"
+    "static/js/main.fc151e9e.js"
   ]
 }
