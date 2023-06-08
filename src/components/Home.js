@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { Link } from 'react-router-dom'
 import { Typography, AppBar, Card, CardActions, CardContent, CardMedia, CssBaseline, Grid, Toolbar, Container, Button } from "@mui/material"; 
 import { createTheme, styled, ThemeProvider } from "@mui/material/styles";
+
 import pathing from "../images/pathing.gif"
 import sudoku from "../images/sudoku.gif"
 import { grey } from "@mui/material/colors";
@@ -10,6 +11,10 @@ import pokeball from "../images/Pokeball.png"
 import pokedex from "../images/pokedex.png"
 import chess from "../images/Chess.png"
 import cuberunner from "../images/CubeRunner.png"
+import td from '../images/TD.png'
+import cursedWoods from '../images/cursed_woods.png'
+import tictactoe from '../images/TicTacToe.png'
+
 import {Link as MuiLink} from '@mui/material/';
 
 
@@ -22,10 +27,13 @@ const cardData = [
     {title: "Pokedex", description: "Browse all Pokemon", src: pokedex, link: "genSelect", link2: "pokemonSummary"},
 ]
 
-//Full stack projects hosted elsewhere
+//projects hosted elsewhere
 const cardData2 = [
     {title: "Chess Rooms", description: "Site where users can join friends or strangers in a quick game of chess", src: chess, link: "https://chess-rooms.onrender.com/", link2: ""},
-    {title: "Cube Runner", description: "Remake of old flash game Cube Runner", src: cuberunner, link: "https://cuberunner.onrender.com/", link2: ""}
+    {title: "Cube Runner", description: "Remake of old flash game Cube Runner made with Three js", src: cuberunner, link: "https://cuberunner.onrender.com/", link2: ""},
+    {title: "Zombie_TD", description: "Zombie tower defense game made with Three js", src: td, link: "https://zombie-td.onrender.com/", link2: ""},
+    {title: "Cursed Woods", description: "3D Horror game made with Three js", src: cursedWoods, link: "https://cursed-woods.onrender.com/", link2: ""},
+    {title: "TicTacToe_AI", description: "TicTacToe AI using minimax algorithm", src: tictactoe, link: "https://tictactoe-ai.onrender.com/", link2: ""}
 ]
 
 const Home = ({paperTheme}) => {
